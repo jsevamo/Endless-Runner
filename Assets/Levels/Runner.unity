@@ -493,7 +493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacle: {fileID: 1916429340992860, guid: 030785233f43f42f88ba2e2fa775f47a, type: 2}
   obstacleList: []
-  speed: -5
+  speed: -9
   boxCount: 0
 --- !u!4 &1867207246
 Transform:
