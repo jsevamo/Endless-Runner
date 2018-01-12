@@ -27,11 +27,11 @@ public class AddObstacle : MonoBehaviour {
 	IEnumerator addObjects()
 	{
 		for (int i = 0; i < timeForRun; i++) {
-			yield return new WaitForSeconds (3f);
+			yield return new WaitForSeconds (1f);
 			//Debug.Log (a);
 			//a++;
 
-			GameObject newObstacle = Instantiate (obstacle, new Vector3 (12, -3.75f, -1), Quaternion.identity) as GameObject;
+			GameObject newObstacle = Instantiate (obstacle, new Vector3 (Random.Range(10,17), -3.75f, -1), Quaternion.identity) as GameObject;
 			obstacleList.Add (newObstacle);
 			boxCount++;
 		}
