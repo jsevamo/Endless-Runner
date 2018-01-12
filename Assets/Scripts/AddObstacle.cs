@@ -27,7 +27,7 @@ public class AddObstacle : MonoBehaviour {
 	IEnumerator addObjects()
 	{
 		for (int i = 0; i < timeForRun; i++) {
-			yield return new WaitForSeconds (3);
+			yield return new WaitForSeconds (3f);
 			//Debug.Log (a);
 			//a++;
 

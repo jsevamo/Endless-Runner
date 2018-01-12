@@ -15,7 +15,7 @@ public class ScrollBackground : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
 		Vector2 offset = new Vector2 (Time.time * speed, 0);
 		rend.material.mainTextureOffset = offset;
