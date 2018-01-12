@@ -8,7 +8,7 @@ public class AddObstacle : MonoBehaviour {
 	public List<GameObject> obstacleList = new List<GameObject> ();
 	int a = 0;
 	int timeForRun;
-	public float speed = -0.05f;
+	public float speed = -9f;
 	[SerializeField] int boxCount;
 
 	// Use this for initialization
