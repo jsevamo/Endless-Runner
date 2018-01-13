@@ -10,6 +10,8 @@ public class AddObstacle : MonoBehaviour {
 	int timeForRun;
 	public float speed = -9f;
 	[SerializeField] int boxCount;
+	CharacterScript character;
+
 
 	// Use this for initialization
 	void Start () {
@@ -17,11 +19,29 @@ public class AddObstacle : MonoBehaviour {
 		timeForRun = 999999999;
 		boxCount = 0;
 		StartCoroutine(addObjects());
+
+		character = GameObject.Find ("Cat").GetComponent<CharacterScript> ();
 	}
+
+
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		moveObjects ();
+	}
+
+	void Update()
+	{
+		if (character.IsDead) {
+			StopCoroutine("addObjects");
+
+		}
+
+		if (character.hasReseted) {
+			resetgame ();
+			character.hasReseted = false;
+
+		}
 	}
 
 	IEnumerator addObjects()
@@ -31,7 +51,7 @@ public class AddObstacle : MonoBehaviour {
 			//Debug.Log (a);
 			//a++;
 
-			GameObject newObstacle = Instantiate (obstacle, new Vector3 (Random.Range(10,17), -3.75f, -1), Quaternion.identity) as GameObject;
+			GameObject newObstacle = Instantiate (obstacle, new Vector3 (Random.Range(10,12), -3.75f, -1), Quaternion.identity) as GameObject;
 			obstacleList.Add (newObstacle);
 			boxCount++;
 		}
@@ -56,5 +76,18 @@ public class AddObstacle : MonoBehaviour {
 		}
 
 
+	}
+
+	public void resetgame()
+	{
+		
+		for (int i = 0; i < boxCount; i++) {
+			Destroy (obstacleList [i]);
+		}
+
+		obstacleList.Clear ();
+		boxCount = 0;
+
+	
 	}
 }

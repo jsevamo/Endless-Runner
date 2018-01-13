@@ -333,9 +333,9 @@ GameObject:
   - component: {fileID: 1489273355}
   - component: {fileID: 1489273354}
   - component: {fileID: 1489273353}
-  - component: {fileID: 1489273352}
   - component: {fileID: 1489273351}
   - component: {fileID: 1489273350}
+  - component: {fileID: 1489273352}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -355,6 +355,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: {x: 0, y: 1500}
+  IsGrounded: 0
+  IsDead: 0
+  hasReseted: 0
 --- !u!50 &1489273351
 Rigidbody2D:
   serializedVersion: 4
@@ -375,8 +378,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &1489273352
-CircleCollider2D:
+--- !u!70 &1489273352
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -387,9 +390,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.47, y: 0}
-  serializedVersion: 2
-  m_Radius: 2.05
+  m_Offset: {x: -0.14, y: 0}
+  m_Size: {x: 2.6045074, y: 4.47}
+  m_Direction: 0
 --- !u!95 &1489273353
 Animator:
   serializedVersion: 3
@@ -473,6 +476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1867207246}
   - component: {fileID: 1867207245}
+  - component: {fileID: 1867207247}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -508,6 +512,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1867207247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1867207244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6700c43e60415429fb0ead8ea11bfb31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1909186812
 GameObject:
   m_ObjectHideFlags: 0
