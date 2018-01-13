@@ -378,8 +378,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!68 &1489273352
-EdgeCollider2D:
+--- !u!70 &1489273352
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -390,18 +390,9 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -1.2539463, y: 0.045501947}
-  - {x: -0.32787228, y: -2.149318}
-  - {x: 0.2423811, y: -2.1558905}
-  - {x: 0.70792675, y: -1.1375418}
-  - {x: 1.355895, y: -0.23680139}
-  - {x: 1.1174412, y: 1.0465386}
-  - {x: -0.42961597, y: 1.3650501}
-  - {x: -1.3396492, y: 0}
-  - {x: -1.3396492, y: 0}
+  m_Offset: {x: -0.14, y: 0}
+  m_Size: {x: 2.6045074, y: 4.47}
+  m_Direction: 0
 --- !u!95 &1489273353
 Animator:
   serializedVersion: 3
