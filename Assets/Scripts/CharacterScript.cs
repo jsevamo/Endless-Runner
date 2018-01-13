@@ -41,7 +41,7 @@ public class CharacterScript : MonoBehaviour
 			anim.SetBool ("isJumping", true);
 		}
 
-		Debug.Log (hasReseted);
+		//Debug.Log (hasReseted);
 
 			
 	}
@@ -56,7 +56,7 @@ public class CharacterScript : MonoBehaviour
 		} 
 
 		if (other.gameObject.CompareTag ("Obstacle")) {
-			Debug.Log ("You died");
+			//Debug.Log ("You died");
 			IsDead = true;
 			Time.timeScale = 0f;
 		} 
