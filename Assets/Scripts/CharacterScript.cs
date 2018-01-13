@@ -29,6 +29,7 @@ public class CharacterScript : MonoBehaviour
 		GC = GameObject.Find ("GameController").GetComponent<GameController> ();
 		GC.lifeCountText.text = "Vidas: " + lifes.ToString ();
 		GC.losingText.gameObject.SetActive (false);
+		GC.tryAgainButton.gameObject.SetActive (false);
 		
 	}
 	
@@ -70,13 +71,25 @@ public class CharacterScript : MonoBehaviour
 			Time.timeScale = 0f;
 			lifes--;
 
-			if (lifes == 1) {
-				GC.losingText.text = "¡Oh no! Te queda " + lifes.ToString () + " vida. ¿Quieres intentar de nuevo?";
+			if (lifes > 0) {
+				if (lifes == 1) {
+					GC.losingText.text = "¡Oh no! Te queda " + lifes.ToString () + " vida. ¿Quieres intentar de nuevo?";
+				} else {
+					GC.losingText.text = "¡Oh no! Te quedan " + lifes.ToString () + " vidas. ¿Quieres intentar de nuevo?";
+				}
 			} else {
-				GC.losingText.text = "¡Oh no! Te quedan " + lifes.ToString () + " vidas. ¿Quieres intentar de nuevo?";
+				GC.losingText.fontSize = 65;
+				GC.losingText.text = "No te quedan mas vidas. ¡Ingresa mas cupones en la pagina para redimir mas!";
 			}
 
+
+
 			GC.losingText.gameObject.SetActive (true);
+			GC.tryAgainButton.gameObject.SetActive (true);
+
+			if (lifes == 0) {
+				GC.tryAgainButton.gameObject.SetActive (false);
+			}
 		} 
 
 	}
@@ -91,5 +104,6 @@ public class CharacterScript : MonoBehaviour
 		IsGrounded = false;
 		GC.lifeCountText.text = "Vidas: " + lifes.ToString ();
 		GC.losingText.gameObject.SetActive (false);
+		GC.tryAgainButton.gameObject.SetActive (false);
 	}
 }

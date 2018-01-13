@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
 	public Text hightScoreText;
 	public Text lifeCountText;
 	public Text losingText;
+	public Button tryAgainButton;
 	[HideInInspector] public float TotalPoints;
 	[HideInInspector] public float HighScore;
 	int numberOfTries;
