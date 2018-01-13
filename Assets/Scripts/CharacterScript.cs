@@ -27,7 +27,7 @@ public class CharacterScript : MonoBehaviour
 		force = new Vector2 (0, JumpForce);
 
 		GC = GameObject.Find ("GameController").GetComponent<GameController> ();
-		GC.lifeCountText.text = "Vidas: " + lifes.ToString ();
+		GC.lifeCountText.text = "X " + lifes.ToString ();
 		GC.losingText.gameObject.SetActive (false);
 		GC.tryAgainButton.gameObject.SetActive (false);
 		
@@ -126,7 +126,7 @@ public class CharacterScript : MonoBehaviour
 		hasReseted = true;
 		IsDead = false;
 		IsGrounded = false;
-		GC.lifeCountText.text = "Vidas: " + lifes.ToString ();
+		GC.lifeCountText.text = "X " + lifes.ToString ();
 		GC.losingText.gameObject.SetActive (false);
 		GC.tryAgainButton.gameObject.SetActive (false);
 	}
