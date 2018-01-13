@@ -9,10 +9,11 @@ public class CharacterScript : MonoBehaviour
 	public int JumpForce = 1500;
 	Vector2 force;
 	public bool IsGrounded;
-	int i;
 	Animator anim;
 	public bool IsDead;
 	public bool hasReseted;
+	public int lifes = 3;
+	GameController GC;
 
 	// Use this for initialization
 	void Start ()
@@ -22,9 +23,12 @@ public class CharacterScript : MonoBehaviour
 		anim = GetComponent<Animator> ();
 		IsGrounded = false;
 		IsDead = false;
-		i = 0;
 		hasReseted = false;
 		force = new Vector2 (0, JumpForce);
+
+		GC = GameObject.Find ("GameController").GetComponent<GameController> ();
+		GC.lifeCountText.text = "Vidas: " + lifes.ToString ();
+		GC.losingText.gameObject.SetActive (false);
 		
 	}
 	
@@ -59,10 +63,20 @@ public class CharacterScript : MonoBehaviour
 
 		if (other.gameObject.CompareTag ("Obstacle")) {
 			//Debug.Log ("You died");
+
 			IsDead = true;
 			rb.velocity = Vector3.zero;
 			force = Vector2.zero;
 			Time.timeScale = 0f;
+			lifes--;
+
+			if (lifes == 1) {
+				GC.losingText.text = "¡Oh no! Te queda " + lifes.ToString () + " vida. ¿Quieres intentar de nuevo?";
+			} else {
+				GC.losingText.text = "¡Oh no! Te quedan " + lifes.ToString () + " vidas. ¿Quieres intentar de nuevo?";
+			}
+
+			GC.losingText.gameObject.SetActive (true);
 		} 
 
 	}
@@ -75,6 +89,7 @@ public class CharacterScript : MonoBehaviour
 		hasReseted = true;
 		IsDead = false;
 		IsGrounded = false;
-
+		GC.lifeCountText.text = "Vidas: " + lifes.ToString ();
+		GC.losingText.gameObject.SetActive (false);
 	}
 }

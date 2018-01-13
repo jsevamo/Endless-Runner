@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour {
 	CharacterScript character;
 	public Text pointsText;
 	public Text hightScoreText;
+	public Text lifeCountText;
+	public Text losingText;
 	[HideInInspector] public float TotalPoints;
 	[HideInInspector] public float HighScore;
 	int numberOfTries;
@@ -54,7 +56,7 @@ public class GameController : MonoBehaviour {
 			}
 
 		} else {
-			setPointsToUI ();
+			setUI ();
 		}
 			
 		resetSaveData ();
@@ -62,7 +64,7 @@ public class GameController : MonoBehaviour {
 	}
 
 
-	void setPointsToUI()
+	void setUI()
 	{
 
 		if (numberOfTries == 0 && PlayerPrefs.HasKey("HighScore")==false && HighScore == 0) {
@@ -82,6 +84,7 @@ public class GameController : MonoBehaviour {
 				hightScoreText.text = ("High Score: ") + Mathf.Round (HighScore).ToString ();
 			}
 		}
+			
 
 
 	}
