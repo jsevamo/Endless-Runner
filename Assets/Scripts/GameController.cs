@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour {
 	public float pointChangeSpeed = 0.3f;
 	public bool deleteData = false;
 	bool wantToTryAgain;
+	[HideInInspector] public bool grabbedCollect = false;
+	int amountOfPointsGained = 100;
 
 
 
@@ -66,6 +68,8 @@ public class GameController : MonoBehaviour {
 		}
 			
 		resetSaveData ();
+
+		//Debug.Log (grabbedCollect);
 		
 	}
 
@@ -74,18 +78,30 @@ public class GameController : MonoBehaviour {
 	{
 
 		if (numberOfTries == 0 && PlayerPrefs.HasKey("HighScore")==false && HighScore == 0) {
+
+			if (grabbedCollect) {
+				TotalPoints += amountOfPointsGained;
+				HighScore = TotalPoints;
+			}
+
 			TotalPoints = TotalPoints + pointChangeSpeed;
-			HighScore = HighScore + pointChangeSpeed;
+			HighScore = TotalPoints;
 			PlayerPrefs.SetFloat ("HighScore", HighScore);
 			pointsText.text = Mathf.Round (TotalPoints).ToString ();
 			hightScoreText.text = ("High Score: ") + Mathf.Round (HighScore).ToString ();
 
 		} else {
+
+			if (grabbedCollect) {
+				TotalPoints += amountOfPointsGained;
+			}
+			
+
 			TotalPoints = TotalPoints + pointChangeSpeed;
 			pointsText.text = Mathf.Round (TotalPoints).ToString ();
 
 			if (TotalPoints >= HighScore) {
-				HighScore = HighScore + pointChangeSpeed;
+				HighScore = TotalPoints;
 				PlayerPrefs.SetFloat ("HighScore", HighScore);
 				hightScoreText.text = ("High Score: ") + Mathf.Round (HighScore).ToString ();
 			}

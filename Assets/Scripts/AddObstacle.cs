@@ -5,13 +5,18 @@ using UnityEngine;
 public class AddObstacle : MonoBehaviour {
 
 	public GameObject obstacle;
+	public GameObject collectible;
 	public List<GameObject> obstacleList = new List<GameObject> ();
+	public List<GameObject> collectibleList = new List<GameObject> ();
 	int timeForRun;
 	public float speed = -9f;
 	[SerializeField] int boxCount;
+	[SerializeField] int collectCount;
 	CharacterScript character;
 	GameController GC;
 	float timeForSpawn = 2.5f;
+
+
 
 
 
@@ -20,7 +25,9 @@ public class AddObstacle : MonoBehaviour {
 
 		timeForRun = 999999999;
 		boxCount = 0;
+		collectCount = 0;
 		StartCoroutine(addObjects());
+		StartCoroutine(addCollectible());
 
 		character = GameObject.Find ("Cat").GetComponent<CharacterScript> ();
 		GC = GameObject.Find ("GameController").GetComponent<GameController> ();
@@ -48,7 +55,7 @@ public class AddObstacle : MonoBehaviour {
 		}
 
 		SetDifficulty ();
-		Debug.Log (timeForSpawn);
+		//Debug.Log (timeForSpawn);
 	}
 
 	IEnumerator addObjects()
@@ -62,6 +69,18 @@ public class AddObstacle : MonoBehaviour {
 			boxCount++;
 		}
 
+	}
+
+	IEnumerator addCollectible()
+	{
+		for (int i = 0; i < timeForRun; i++) {
+
+			yield return new WaitForSeconds (Random.Range (5, 15));
+
+			GameObject newCollectible = Instantiate(collectible, new Vector3 (Random.Range(10,12), Random.Range(-1f,0.5f), -1), Quaternion.identity) as GameObject;
+			collectibleList.Add (newCollectible);
+			collectCount++;
+		}
 	}
 
 
@@ -81,6 +100,20 @@ public class AddObstacle : MonoBehaviour {
 			}
 		}
 
+		if (collectibleList != null) {
+
+			for (int i = 0; i < collectCount; i++) {
+				collectibleList[i].transform.Translate(new Vector2 (speed * Time.deltaTime, 0));
+
+				if (collectibleList[i].transform.position.x < -12) {
+					Destroy (collectibleList [i]);
+					collectibleList.RemoveAt (i);
+					collectCount--;
+
+				}
+			}
+		}
+
 
 	}
 
@@ -92,7 +125,18 @@ public class AddObstacle : MonoBehaviour {
 		}
 
 		obstacleList.Clear ();
+
+		for (int i = 0; i < collectCount; i++) {
+			Destroy (collectibleList [i]);
+		}
+
+		collectibleList.Clear ();
+
+
+
+
 		boxCount = 0;
+		collectCount = 0;
 
 		timeForSpawn = 2.5f;
 		Time.timeScale = 1f;

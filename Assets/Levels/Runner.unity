@@ -568,7 +568,7 @@ RectTransform:
   m_GameObject: {fileID: 1483130739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 596797706}
   m_RootOrder: 0
@@ -599,16 +599,16 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: fa0cc4fd9b67f48b4af04d3495943cbd, type: 3}
-    m_FontSize: 16
+    m_FontSize: 93
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 116
+    m_MaxSize: 145
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Intentar de nuevo
 --- !u!222 &1483130742
@@ -652,7 +652,7 @@ MonoBehaviour:
   IsGrounded: 0
   IsDead: 0
   hasReseted: 0
-  lifes: 5
+  lifes: 3
 --- !u!50 &1489273351
 Rigidbody2D:
   serializedVersion: 4
@@ -1075,9 +1075,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacle: {fileID: 1916429340992860, guid: 030785233f43f42f88ba2e2fa775f47a, type: 2}
+  collectible: {fileID: 1867103974137350, guid: 56e736a2b3d4940bc9da6072aa2197b4,
+    type: 2}
   obstacleList: []
+  collectibleList: []
   speed: -9
   boxCount: 0
+  collectCount: 0
 --- !u!4 &1867207246
 Transform:
   m_ObjectHideFlags: 0
@@ -1110,7 +1114,8 @@ MonoBehaviour:
   TotalPoints: 0
   HighScore: 0
   pointChangeSpeed: 0.3
-  deleteData: 0
+  deleteData: 1
+  grabbedCollect: 0
 --- !u!1 &1909186812
 GameObject:
   m_ObjectHideFlags: 0

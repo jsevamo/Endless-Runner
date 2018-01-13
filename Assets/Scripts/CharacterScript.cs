@@ -48,7 +48,8 @@ public class CharacterScript : MonoBehaviour
 			anim.SetBool ("isJumping", true);
 		}
 
-		//Debug.Log (rb.velocity.magnitude);
+
+		Debug.Log (GC.grabbedCollect);
 
 			
 	}
@@ -58,6 +59,7 @@ public class CharacterScript : MonoBehaviour
 		if (other.gameObject.CompareTag ("Ground")) {
 			anim.SetBool ("isJumping", false);
 			IsGrounded = true;
+			//GC.grabbedCollect = false;
 			//Debug.Log (IsGrounded);
 
 		} 
@@ -93,6 +95,19 @@ public class CharacterScript : MonoBehaviour
 			}
 		} 
 
+		if (other.gameObject.CompareTag ("Collectible")) {
+			other.gameObject.SetActive (false);
+			GC.grabbedCollect = true;
+			StartCoroutine(stopPoints());
+		}
+			
+
+	}
+
+	IEnumerator stopPoints()
+	{
+		yield return new WaitForSeconds (0.01f);
+		GC.grabbedCollect = false;
 	}
 
 	public void resetgame()
