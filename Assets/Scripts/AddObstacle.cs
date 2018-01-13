@@ -10,6 +10,9 @@ public class AddObstacle : MonoBehaviour {
 	public float speed = -9f;
 	[SerializeField] int boxCount;
 	CharacterScript character;
+	GameController GC;
+	float timeForSpawn = 2f;
+
 
 
 	// Use this for initialization
@@ -20,6 +23,8 @@ public class AddObstacle : MonoBehaviour {
 		StartCoroutine(addObjects());
 
 		character = GameObject.Find ("Cat").GetComponent<CharacterScript> ();
+		GC = GameObject.Find ("GameController").GetComponent<GameController> ();
+
 	}
 
 
@@ -41,14 +46,16 @@ public class AddObstacle : MonoBehaviour {
 			character.hasReseted = false;
 
 		}
+
+		SetDifficulty ();
+		Debug.Log (timeForSpawn);
 	}
 
 	IEnumerator addObjects()
 	{
 		for (int i = 0; i < timeForRun; i++) {
-			yield return new WaitForSeconds (1f);
-			//Debug.Log (a);
-			//a++;
+			
+			yield return new WaitForSeconds (timeForSpawn);
 
 			GameObject newObstacle = Instantiate (obstacle, new Vector3 (Random.Range(10,12), -3.75f, -1), Quaternion.identity) as GameObject;
 			obstacleList.Add (newObstacle);
@@ -87,6 +94,42 @@ public class AddObstacle : MonoBehaviour {
 		obstacleList.Clear ();
 		boxCount = 0;
 
-	
+		timeForSpawn = 2f;
+		Time.timeScale = 1f;
+	}
+
+	void SetDifficulty()
+	{
+		if (GC.TotalPoints > 100 && GC.TotalPoints < 700) {
+			timeForSpawn = 1.5f;
+		} else if (GC.TotalPoints > 701 && GC.TotalPoints < 1000) {
+			timeForSpawn = 1.2f;
+		} else if (GC.TotalPoints > 1001 && GC.TotalPoints < 1500) {
+			timeForSpawn = 0.9f;
+		} else if (GC.TotalPoints > 1501 && GC.TotalPoints < 2000) {
+			if (!character.IsDead) {
+				Time.timeScale = 1.1f;
+			}
+		} else if (GC.TotalPoints > 2001 && GC.TotalPoints < 3000) {
+			if (!character.IsDead) {
+				Time.timeScale = 1.2f;
+				timeForSpawn = 0.85f;
+			}
+		}
+		else if (GC.TotalPoints > 3001 && GC.TotalPoints < 4000) {
+			if (!character.IsDead) {
+				Time.timeScale = 1.3f;
+			}
+		}
+		else if (GC.TotalPoints > 3001 && GC.TotalPoints < 4000) {
+			if (!character.IsDead) {
+				Time.timeScale = 1.4f;
+			}
+		}
+		else if (GC.TotalPoints > 4001 && GC.TotalPoints < 5000) {
+			if (!character.IsDead) {
+				Time.timeScale = 1.5f;
+			}
+		}
 	}
 }

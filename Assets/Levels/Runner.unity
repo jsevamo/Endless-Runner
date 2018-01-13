@@ -652,7 +652,7 @@ MonoBehaviour:
   IsGrounded: 0
   IsDead: 0
   hasReseted: 0
-  lifes: 3
+  lifes: 5
 --- !u!50 &1489273351
 Rigidbody2D:
   serializedVersion: 4
@@ -1109,7 +1109,7 @@ MonoBehaviour:
   tryAgainButton: {fileID: 596797707}
   TotalPoints: 0
   HighScore: 0
-  pointChangeSpeed: 0.3
+  pointChangeSpeed: 3
   deleteData: 1
 --- !u!1 &1909186812
 GameObject:
