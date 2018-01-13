@@ -6,7 +6,8 @@ public class CharacterScript : MonoBehaviour
 {
 
 	Rigidbody2D rb;
-	public Vector2 force = new Vector2 (0, 1500);
+	public int JumpForce = 1500;
+	Vector2 force;
 	public bool IsGrounded;
 	int i;
 	Animator anim;
@@ -23,6 +24,7 @@ public class CharacterScript : MonoBehaviour
 		IsDead = false;
 		i = 0;
 		hasReseted = false;
+		force = new Vector2 (0, JumpForce);
 		
 	}
 	
@@ -41,7 +43,7 @@ public class CharacterScript : MonoBehaviour
 			anim.SetBool ("isJumping", true);
 		}
 
-		//Debug.Log (hasReseted);
+		Debug.Log (rb.velocity.magnitude);
 
 			
 	}
@@ -58,6 +60,8 @@ public class CharacterScript : MonoBehaviour
 		if (other.gameObject.CompareTag ("Obstacle")) {
 			//Debug.Log ("You died");
 			IsDead = true;
+			rb.velocity = Vector3.zero;
+			force = Vector2.zero;
 			Time.timeScale = 0f;
 		} 
 
@@ -65,9 +69,12 @@ public class CharacterScript : MonoBehaviour
 
 	public void resetgame()
 	{
+		force = new Vector2 (0, JumpForce);
+		rb.velocity = Vector3.zero;
 		transform.position = new Vector3 (-6.44f, 1.6f, -1f);
 		hasReseted = true;
 		IsDead = false;
 		IsGrounded = false;
+
 	}
 }
