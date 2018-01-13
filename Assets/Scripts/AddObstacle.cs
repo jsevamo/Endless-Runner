@@ -11,7 +11,7 @@ public class AddObstacle : MonoBehaviour {
 	[SerializeField] int boxCount;
 	CharacterScript character;
 	GameController GC;
-	float timeForSpawn = 2f;
+	float timeForSpawn = 2.5f;
 
 
 
@@ -94,14 +94,14 @@ public class AddObstacle : MonoBehaviour {
 		obstacleList.Clear ();
 		boxCount = 0;
 
-		timeForSpawn = 2f;
+		timeForSpawn = 2.5f;
 		Time.timeScale = 1f;
 	}
 
 	void SetDifficulty()
 	{
 		if (GC.TotalPoints > 100 && GC.TotalPoints < 700) {
-			timeForSpawn = 1.5f;
+			timeForSpawn = 1.8f;
 		} else if (GC.TotalPoints > 701 && GC.TotalPoints < 1000) {
 			timeForSpawn = 1.2f;
 		} else if (GC.TotalPoints > 1001 && GC.TotalPoints < 1500) {
@@ -129,6 +129,16 @@ public class AddObstacle : MonoBehaviour {
 		else if (GC.TotalPoints > 4001 && GC.TotalPoints < 5000) {
 			if (!character.IsDead) {
 				Time.timeScale = 1.5f;
+			}
+		}
+		else if (GC.TotalPoints > 5001 && GC.TotalPoints < 6000) {
+			if (!character.IsDead) {
+				Time.timeScale = 1.7f;
+			}
+		}
+		else if (GC.TotalPoints > 6001 && GC.TotalPoints < 7000) {
+			if (!character.IsDead) {
+				Time.timeScale = 1.9f;
 			}
 		}
 	}
