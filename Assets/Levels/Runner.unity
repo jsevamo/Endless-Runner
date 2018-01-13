@@ -685,8 +685,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.14, y: 0}
-  m_Size: {x: 2.6045074, y: 4.47}
+  m_Offset: {x: -0.14311457, y: -0.34756577}
+  m_Size: {x: 1.6172285, y: 3.6617277}
   m_Direction: 0
 --- !u!95 &1489273353
 Animator:
@@ -1109,8 +1109,8 @@ MonoBehaviour:
   tryAgainButton: {fileID: 596797707}
   TotalPoints: 0
   HighScore: 0
-  pointChangeSpeed: 3
-  deleteData: 1
+  pointChangeSpeed: 0.3
+  deleteData: 0
 --- !u!1 &1909186812
 GameObject:
   m_ObjectHideFlags: 0

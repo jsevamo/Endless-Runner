@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\AddObstacle.cs" />
      <Compile Include="Assets\Scripts\CharacterScript.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\LoadLevel.cs" />
      <Compile Include="Assets\Scripts\ScrollBackground.cs" />
      <Compile Include="Assets\Scripts\ScrollBG.cs" />
  <Reference Include="UnityEngine.UI">
