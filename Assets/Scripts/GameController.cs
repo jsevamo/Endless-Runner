@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
 	[HideInInspector] public float HighScore;
 	int numberOfTries;
 	public float pointChangeSpeed = 0.3f;
+	public bool deleteData = false;
 
 
 
@@ -21,7 +22,17 @@ public class GameController : MonoBehaviour {
 
 		character = GameObject.Find ("Cat").GetComponent<CharacterScript> ();
 		TotalPoints = 0;
-		HighScore = 0;
+
+		if (PlayerPrefs.HasKey("HighScore")) {
+
+			HighScore = PlayerPrefs.GetFloat ("HighScore");
+			hightScoreText.text = ("High Score: ") + Mathf.Round (HighScore).ToString ();
+
+		} else if(deleteData == true) {
+			HighScore = 0;
+		}
+
+
 		pointsText.text = 0.ToString();
 		numberOfTries = 0;
 		
@@ -29,6 +40,8 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
 
 		if (character.IsDead) {
 
@@ -44,7 +57,7 @@ public class GameController : MonoBehaviour {
 			setPointsToUI ();
 		}
 			
-
+		resetSaveData ();
 		
 	}
 
@@ -52,9 +65,10 @@ public class GameController : MonoBehaviour {
 	void setPointsToUI()
 	{
 
-		if (numberOfTries == 0) {
+		if (numberOfTries == 0 && PlayerPrefs.HasKey("HighScore")==false && HighScore == 0) {
 			TotalPoints = TotalPoints + pointChangeSpeed;
 			HighScore = HighScore + pointChangeSpeed;
+			PlayerPrefs.SetFloat ("HighScore", HighScore);
 			pointsText.text = Mathf.Round (TotalPoints).ToString ();
 			hightScoreText.text = ("High Score: ") + Mathf.Round (HighScore).ToString ();
 
@@ -64,16 +78,23 @@ public class GameController : MonoBehaviour {
 
 			if (TotalPoints >= HighScore) {
 				HighScore = HighScore + pointChangeSpeed;
+				PlayerPrefs.SetFloat ("HighScore", HighScore);
 				hightScoreText.text = ("High Score: ") + Mathf.Round (HighScore).ToString ();
 			}
 		}
 
 
-
-
-
-
-
-
 	}
+
+
+	void resetSaveData()
+	{
+		if (deleteData) {
+			PlayerPrefs.DeleteAll ();
+		}
+			
+		
+	}
+
+
 }

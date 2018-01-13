@@ -759,6 +759,7 @@ MonoBehaviour:
   TotalPoints: 0
   HighScore: 0
   pointChangeSpeed: 0.3
+  deleteData: 0
 --- !u!1 &1909186812
 GameObject:
   m_ObjectHideFlags: 0
