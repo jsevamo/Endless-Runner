@@ -7,8 +7,12 @@ public class GameController : MonoBehaviour {
 
 	CharacterScript character;
 	public Text pointsText;
+	public Text hightScoreText;
 	[HideInInspector] public float TotalPoints;
-	float framesThatHavePassed;
+	[HideInInspector] public float HighScore;
+	int numberOfTries;
+	public float pointChangeSpeed = 0.3f;
+
 
 
 
@@ -16,7 +20,10 @@ public class GameController : MonoBehaviour {
 	void Start () {
 
 		character = GameObject.Find ("Cat").GetComponent<CharacterScript> ();
+		TotalPoints = 0;
+		HighScore = 0;
 		pointsText.text = 0.ToString();
+		numberOfTries = 0;
 		
 	}
 	
@@ -27,16 +34,16 @@ public class GameController : MonoBehaviour {
 
 			if (Input.GetButtonDown ("Jump")) {
 				character.resetgame ();
+				numberOfTries++;
 				Time.timeScale = 1f;
 				TotalPoints = 0;
+
 			}
 
 		} else {
 			setPointsToUI ();
 		}
-
-
-
+			
 
 		
 	}
@@ -44,7 +51,29 @@ public class GameController : MonoBehaviour {
 
 	void setPointsToUI()
 	{
-		TotalPoints = TotalPoints+0.3f;
-		pointsText.text = Mathf.Round(TotalPoints).ToString();
+
+		if (numberOfTries == 0) {
+			TotalPoints = TotalPoints + pointChangeSpeed;
+			HighScore = HighScore + pointChangeSpeed;
+			pointsText.text = Mathf.Round (TotalPoints).ToString ();
+			hightScoreText.text = ("High Score: ") + Mathf.Round (HighScore).ToString ();
+
+		} else {
+			TotalPoints = TotalPoints + pointChangeSpeed;
+			pointsText.text = Mathf.Round (TotalPoints).ToString ();
+
+			if (TotalPoints >= HighScore) {
+				HighScore = HighScore + pointChangeSpeed;
+				hightScoreText.text = ("High Score: ") + Mathf.Round (HighScore).ToString ();
+			}
+		}
+
+
+
+
+
+
+
+
 	}
 }

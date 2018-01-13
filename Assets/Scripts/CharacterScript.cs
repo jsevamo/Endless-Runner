@@ -43,7 +43,7 @@ public class CharacterScript : MonoBehaviour
 			anim.SetBool ("isJumping", true);
 		}
 
-		Debug.Log (rb.velocity.magnitude);
+		//Debug.Log (rb.velocity.magnitude);
 
 			
 	}
