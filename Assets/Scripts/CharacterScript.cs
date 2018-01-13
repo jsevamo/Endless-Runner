@@ -79,6 +79,7 @@ public class CharacterScript : MonoBehaviour
 				}
 			} else {
 				GC.losingText.fontSize = 65;
+				GC.lifeCountText.gameObject.SetActive (false);
 				GC.losingText.text = "No te quedan mas vidas. ¡Ingresa mas cupones en la pagina para redimir mas!";
 			}
 

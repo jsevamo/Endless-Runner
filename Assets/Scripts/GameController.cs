@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
 	int numberOfTries;
 	public float pointChangeSpeed = 0.3f;
 	public bool deleteData = false;
+	bool wantToTryAgain;
 
 
 
@@ -38,6 +39,8 @@ public class GameController : MonoBehaviour {
 
 		pointsText.text = 0.ToString();
 		numberOfTries = 0;
+
+		wantToTryAgain = false;
 		
 	}
 	
@@ -48,7 +51,8 @@ public class GameController : MonoBehaviour {
 
 		if (character.IsDead) {
 
-			if (Input.GetButtonDown ("Jump")) {
+			if (wantToTryAgain) {
+				wantToTryAgain = false;
 				character.resetgame ();
 				numberOfTries++;
 				Time.timeScale = 1f;
@@ -98,6 +102,11 @@ public class GameController : MonoBehaviour {
 		}
 			
 		
+	}
+
+	public void tryAgain()
+	{
+		wantToTryAgain = true;
 	}
 
 
