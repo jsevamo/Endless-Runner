@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour {
 	public Text hightScoreText;
 	public Text lifeCountText;
 	public Text losingText;
+	public Text oneHundred;
 	public Button tryAgainButton;
 	[HideInInspector] public float TotalPoints;
 	[HideInInspector] public float HighScore;
@@ -39,6 +40,7 @@ public class GameController : MonoBehaviour {
 			HighScore = 0;
 		}
 
+		oneHundred.gameObject.SetActive(false);
 
 		pointsText.text = 0.ToString();
 		numberOfTries = 0;

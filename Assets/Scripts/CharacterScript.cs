@@ -49,7 +49,7 @@ public class CharacterScript : MonoBehaviour
 		}
 
 
-		Debug.Log (GC.grabbedCollect);
+		//Debug.Log (GC.grabbedCollect);
 
 			
 	}
@@ -97,8 +97,10 @@ public class CharacterScript : MonoBehaviour
 
 		if (other.gameObject.CompareTag ("Collectible")) {
 			other.gameObject.SetActive (false);
+			GC.oneHundred.gameObject.SetActive (true);
 			GC.grabbedCollect = true;
 			StartCoroutine(stopPoints());
+			StartCoroutine(showPointsUI());
 		}
 			
 
@@ -106,8 +108,14 @@ public class CharacterScript : MonoBehaviour
 
 	IEnumerator stopPoints()
 	{
-		yield return new WaitForSeconds (0.01f);
+		yield return new WaitForEndOfFrame();
 		GC.grabbedCollect = false;
+	}
+
+	IEnumerator showPointsUI()
+	{	
+		yield return new WaitForSeconds (0.5f);
+		GC.oneHundred.gameObject.SetActive (false);
 	}
 
 	public void resetgame()
