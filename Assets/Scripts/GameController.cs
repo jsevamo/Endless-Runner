@@ -25,10 +25,12 @@ public class GameController : MonoBehaviour {
 
 
 
+
+
 	// Use this for initialization
 	void Start () {
 
-		character = GameObject.Find ("Cat").GetComponent<CharacterScript> ();
+		character = GameObject.Find ("Player").GetComponent<CharacterScript> ();
 		TotalPoints = 0;
 
 		if (PlayerPrefs.HasKey("HighScore")) {
@@ -46,6 +48,9 @@ public class GameController : MonoBehaviour {
 		numberOfTries = 0;
 
 		wantToTryAgain = false;
+
+
+
 		
 	}
 	

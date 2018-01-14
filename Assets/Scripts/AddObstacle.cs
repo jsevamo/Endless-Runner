@@ -29,7 +29,7 @@ public class AddObstacle : MonoBehaviour {
 		StartCoroutine(addObjects());
 		StartCoroutine(addCollectible());
 
-		character = GameObject.Find ("Cat").GetComponent<CharacterScript> ();
+		character = GameObject.Find ("Player").GetComponent<CharacterScript> ();
 		GC = GameObject.Find ("GameController").GetComponent<GameController> ();
 
 	}
@@ -55,7 +55,7 @@ public class AddObstacle : MonoBehaviour {
 		}
 
 		SetDifficulty ();
-		Debug.Log (timeForSpawn);
+		//Debug.Log (timeForSpawn);
 	}
 
 	IEnumerator addObjects()
