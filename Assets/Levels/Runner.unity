@@ -722,7 +722,7 @@ MonoBehaviour:
   IsGrounded: 0
   IsDead: 0
   hasReseted: 0
-  lifes: 3
+  lifes: 10
 --- !u!50 &1489273351
 Rigidbody2D:
   serializedVersion: 4

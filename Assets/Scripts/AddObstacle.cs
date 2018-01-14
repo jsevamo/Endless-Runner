@@ -55,7 +55,7 @@ public class AddObstacle : MonoBehaviour {
 		}
 
 		SetDifficulty ();
-		//Debug.Log (timeForSpawn);
+		Debug.Log (timeForSpawn);
 	}
 
 	IEnumerator addObjects()
@@ -147,42 +147,48 @@ public class AddObstacle : MonoBehaviour {
 		if (GC.TotalPoints > 100 && GC.TotalPoints < 700) {
 			timeForSpawn = 1.8f;
 		} else if (GC.TotalPoints > 701 && GC.TotalPoints < 1000) {
-			timeForSpawn = 1.2f;
+			timeForSpawn = Random.Range (0.9f, 2.5f);
 		} else if (GC.TotalPoints > 1001 && GC.TotalPoints < 1500) {
-			timeForSpawn = 0.9f;
+			timeForSpawn = Random.Range (0.9f, 2.5f);
 		} else if (GC.TotalPoints > 1501 && GC.TotalPoints < 2000) {
 			if (!character.IsDead) {
 				Time.timeScale = 1.1f;
+				timeForSpawn = Random.Range (0.65f, 2.5f);
 			}
 		} else if (GC.TotalPoints > 2001 && GC.TotalPoints < 3000) {
 			if (!character.IsDead) {
 				Time.timeScale = 1.2f;
-				timeForSpawn = 0.85f;
+				timeForSpawn = Random.Range (0.65f, 2.5f);
 			}
 		}
 		else if (GC.TotalPoints > 3001 && GC.TotalPoints < 4000) {
 			if (!character.IsDead) {
 				Time.timeScale = 1.3f;
+				timeForSpawn = Random.Range (0.65f, 2.5f);
 			}
 		}
 		else if (GC.TotalPoints > 3001 && GC.TotalPoints < 4000) {
 			if (!character.IsDead) {
 				Time.timeScale = 1.4f;
+				timeForSpawn = Random.Range (0.65f, 2.5f);
 			}
 		}
 		else if (GC.TotalPoints > 4001 && GC.TotalPoints < 5000) {
 			if (!character.IsDead) {
 				Time.timeScale = 1.5f;
+				timeForSpawn = Random.Range (0.65f, 2.5f);
 			}
 		}
 		else if (GC.TotalPoints > 5001 && GC.TotalPoints < 6000) {
 			if (!character.IsDead) {
 				Time.timeScale = 1.7f;
+				timeForSpawn = Random.Range (0.65f, 2.5f);
 			}
 		}
-		else if (GC.TotalPoints > 6001 && GC.TotalPoints < 7000) {
+		else if (GC.TotalPoints > 6001) {
 			if (!character.IsDead) {
 				Time.timeScale = 1.9f;
+				timeForSpawn = Random.Range (0.65f, 2.5f);
 			}
 		}
 	}
