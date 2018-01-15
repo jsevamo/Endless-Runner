@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
 
 	CharacterScript character;
+	//public GameObject levelLoader;
 	public Text pointsText;
 	public Text hightScoreText;
 	public Text lifeCountText;
 	public Text losingText;
 	public Text oneHundred;
+	public Text usernameText;
 	public Button tryAgainButton;
 	[HideInInspector] public float TotalPoints;
 	[HideInInspector] public float HighScore;
@@ -22,6 +24,7 @@ public class GameController : MonoBehaviour {
 	[HideInInspector] public bool grabbedCollect = false;
 	int amountOfPointsGained = 100;
 
+	public string userName;
 
 
 
@@ -29,6 +32,9 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+
+		usernameText.text = userName;
 
 		character = GameObject.Find ("Player").GetComponent<CharacterScript> ();
 		TotalPoints = 0;

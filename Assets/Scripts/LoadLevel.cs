@@ -16,13 +16,18 @@ public class LoadLevel : MonoBehaviour {
 	public InputField InputUsuario;
 	public Text Sorry;
 	public GameObject Player;
+	public GameObject GC;
 	CharacterScript player;
+	GameController gc;
 	int index;
+
+	public string userName;
 
 	// Use this for initialization
 	void Start () {
 
 		player = Player.GetComponent<CharacterScript> ();
+		gc = GC.GetComponent<GameController> ();
 		
 
 		User1.Add ("j_sevamo");
@@ -64,6 +69,7 @@ public class LoadLevel : MonoBehaviour {
 		}
 
 		if (canStart) {
+			gc.userName = givenName;
 			player.lifes = int.Parse(Users [index] [1]);
 			SceneManager.LoadScene ("Runner");
 		} else {
