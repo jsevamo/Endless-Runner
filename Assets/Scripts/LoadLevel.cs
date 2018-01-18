@@ -20,8 +20,7 @@ public class LoadLevel : MonoBehaviour {
 	CharacterScript player;
 	GameController gc;
 	int index;
-	//string password = "";
-	public Font font;
+	public GUIStyle guiStyle = new GUIStyle();
 
 	public string userName;
 	public string passWord;
@@ -59,10 +58,8 @@ public class LoadLevel : MonoBehaviour {
 
 	void OnGUI()
 	{
-		
-		GUI.skin.label.font = GUI.skin.button.font = GUI.skin.box.font = font;
-		GUI.skin.label.fontSize = GUI.skin.box.fontSize = GUI.skin.button.fontSize = 50;
-		passWord = GUI.PasswordField (new Rect (Screen.width / 2 - 343.74f / 2, Screen.height / 2 + 30, 343.74f, 50), passWord, "*" [0], 25);
+		guiStyle.fontSize = 28; //change the font size
+		passWord = GUI.PasswordField (new Rect (Screen.width / 2 - 343.74f / 2, Screen.height / 2 + 30, 343.74f, 50), passWord, "*" [0], 25, guiStyle);
 	}
 	
 	// Update is called once per frame
