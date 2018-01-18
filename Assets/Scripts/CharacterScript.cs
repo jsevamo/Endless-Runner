@@ -15,6 +15,8 @@ public class CharacterScript : MonoBehaviour
 	public int lifes = 3;
 	GameController GC;
 
+	[HideInInspector] public float totalGameTime;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -25,6 +27,7 @@ public class CharacterScript : MonoBehaviour
 		IsDead = false;
 		hasReseted = false;
 		force = new Vector2 (0, JumpForce);
+		totalGameTime = 0;
 
 		GC = GameObject.Find ("GameController").GetComponent<GameController> ();
 		GC.lifeCountText.text = "X " + lifes.ToString ();
@@ -49,7 +52,7 @@ public class CharacterScript : MonoBehaviour
 		}
 
 
-		//Debug.Log (GC.grabbedCollect);
+
 
 			
 	}
@@ -73,6 +76,7 @@ public class CharacterScript : MonoBehaviour
 			Time.timeScale = 0f;
 			lifes--;
 
+
 			if (lifes > 0) {
 				if (lifes == 1) {
 					GC.losingText.text = "¡Oh no! Te queda " + lifes.ToString () + " vida. ¿Quieres intentar de nuevo?";
@@ -83,6 +87,8 @@ public class CharacterScript : MonoBehaviour
 				GC.losingText.fontSize = 65;
 				GC.lifeCountText.gameObject.SetActive (false);
 				GC.losingText.text = "No te quedan mas vidas. ¡Ingresa mas cupones en la pagina para redimir mas!";
+				Debug.Log (Time.realtimeSinceStartup);
+				totalGameTime = Time.realtimeSinceStartup;
 			}
 
 

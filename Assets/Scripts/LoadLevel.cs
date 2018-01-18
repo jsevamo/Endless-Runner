@@ -34,7 +34,7 @@ public class LoadLevel : MonoBehaviour {
 		User1.Add ("5");
 
 		User2.Add ("felipito");
-		User2.Add ("10");
+		User2.Add ("11");
 
 		Users.Add (User1);
 		Users.Add (User2);
