@@ -5,7 +5,12 @@ using UnityEngine;
 public class AddObstacle : MonoBehaviour {
 
 	public GameObject obstacle;
-	public GameObject collectible;
+
+	public GameObject collectible1;
+	public GameObject collectible2;
+	public GameObject collectible3;
+	public GameObject collectible4;
+
 	public List<GameObject> obstacleList = new List<GameObject> ();
 	public List<GameObject> collectibleList = new List<GameObject> ();
 	int timeForRun;
@@ -73,13 +78,48 @@ public class AddObstacle : MonoBehaviour {
 
 	IEnumerator addCollectible()
 	{
+		
 		for (int i = 0; i < timeForRun; i++) {
 
-			yield return new WaitForSeconds (Random.Range (5, 15));
+			float decideWhichCoin = Mathf.Round (Random.Range (1, 5));
 
-			GameObject newCollectible = Instantiate(collectible, new Vector3 (Random.Range(10,12), Random.Range(-0.5f,1f), -1), Quaternion.identity) as GameObject;
-			collectibleList.Add (newCollectible);
-			collectCount++;
+
+			if (decideWhichCoin == 1) {
+				
+				yield return new WaitForSeconds (Random.Range (5, 15));
+
+				GameObject newCollectible = Instantiate (collectible1, new Vector3 (Random.Range (10, 12), Random.Range (-0.5f, 1f), -1), Quaternion.identity) as GameObject;
+				collectibleList.Add (newCollectible);
+				collectCount++;
+
+			} else if (decideWhichCoin == 2) {
+
+				yield return new WaitForSeconds (Random.Range (5, 15));
+
+				GameObject newCollectible = Instantiate (collectible2, new Vector3 (Random.Range (10, 12), Random.Range (-0.5f, 1f), -1), Quaternion.identity) as GameObject;
+				collectibleList.Add (newCollectible);
+				collectCount++;
+
+			} else if (decideWhichCoin == 3) {
+
+				yield return new WaitForSeconds (Random.Range (5, 15));
+
+				GameObject newCollectible = Instantiate (collectible3, new Vector3 (Random.Range (10, 12), Random.Range (-0.5f, 1f), -1), Quaternion.identity) as GameObject;
+				collectibleList.Add (newCollectible);
+				collectCount++;
+
+			} else if (decideWhichCoin >= 3.1 && decideWhichCoin <= 4) {
+
+				yield return new WaitForSeconds (Random.Range (5, 15));
+
+				GameObject newCollectible = Instantiate (collectible4, new Vector3 (Random.Range (10, 12), Random.Range (-0.5f, 1f), -1), Quaternion.identity) as GameObject;
+				collectibleList.Add (newCollectible);
+				collectCount++;
+
+			}
+
+
+
 		}
 	}
 

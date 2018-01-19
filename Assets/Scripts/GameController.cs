@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour {
 	public Text oneHundred;
 	public Text usernameText;
 	public Button tryAgainButton;
+	public Text timePlayedText;
 	[HideInInspector] public float TotalPoints;
 	[HideInInspector] public float HighScore;
 	int numberOfTries;
@@ -24,6 +25,8 @@ public class GameController : MonoBehaviour {
 	[HideInInspector] public bool grabbedCollect = false;
 	int amountOfPointsGained = 100;
 
+	[HideInInspector] public float totalGameTime;
+
 	public string userName;
 
 
@@ -32,7 +35,9 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		
+		hightScoreText.gameObject.SetActive (false);
+		usernameText.gameObject.SetActive (false);
 
 		usernameText.text = userName;
 
@@ -81,10 +86,12 @@ public class GameController : MonoBehaviour {
 		} else {
 			setUI ();
 		}
+
+		timePlayedText.text = (Mathf.Round(Time.realtimeSinceStartup)).ToString() + "s";
 			
 		resetSaveData ();
 
-		//Debug.Log (grabbedCollect);
+
 		
 	}
 
