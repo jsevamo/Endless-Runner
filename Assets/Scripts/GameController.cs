@@ -11,11 +11,19 @@ public class GameController : MonoBehaviour {
 	public Text pointsText;
 	public Text hightScoreText;
 	public Text lifeCountText;
-	public Text losingText;
 	public Text oneHundred;
 	public Text usernameText;
 	public Button tryAgainButton;
+	public Button QuitButton;
+	public Button FinalQuitButton;
 	public Text timePlayedText;
+
+	public GameObject tryAgainScreen;
+	public GameObject heartImage;
+	public GameObject pointsImage;
+	public GameObject timeImage;
+	public Text pointsWhenLost;
+
 	[HideInInspector] public float TotalPoints;
 	[HideInInspector] public float HighScore;
 	int numberOfTries;
@@ -27,7 +35,7 @@ public class GameController : MonoBehaviour {
 
 	[HideInInspector] public float totalGameTime;
 
-	public string userName;
+	public string userName = "user";
 
 
 
@@ -38,6 +46,10 @@ public class GameController : MonoBehaviour {
 		
 		hightScoreText.gameObject.SetActive (false);
 		usernameText.gameObject.SetActive (false);
+		tryAgainScreen.SetActive (false);
+		pointsWhenLost.gameObject.SetActive (false);
+		QuitButton.gameObject.SetActive (false);
+		FinalQuitButton.gameObject.SetActive (false);
 
 		usernameText.text = userName;
 
@@ -74,13 +86,18 @@ public class GameController : MonoBehaviour {
 
 		if (character.IsDead) {
 
+			tryAgainScreen.SetActive (true);
+
+			pointsWhenLost.text = Mathf.Round(TotalPoints).ToString ();
+			pointsWhenLost.gameObject.SetActive (true);
+
 			if (wantToTryAgain) {
+				
 				wantToTryAgain = false;
 				character.resetgame ();
 				numberOfTries++;
 				Time.timeScale = 1f;
 				TotalPoints = 0;
-
 			}
 
 		} else {
@@ -146,6 +163,7 @@ public class GameController : MonoBehaviour {
 	public void tryAgain()
 	{
 		wantToTryAgain = true;
+
 	}
 
 

@@ -31,7 +31,6 @@ public class CharacterScript : MonoBehaviour
 
 		GC = GameObject.Find ("GameController").GetComponent<GameController> ();
 		GC.lifeCountText.text = "x" + lifes.ToString ();
-		GC.losingText.gameObject.SetActive (false);
 		GC.tryAgainButton.gameObject.SetActive (false);
 		
 	}
@@ -75,25 +74,36 @@ public class CharacterScript : MonoBehaviour
 			force = Vector2.zero;
 			Time.timeScale = 0f;
 			lifes--;
+			GC.usernameText.gameObject.SetActive (true);
+			GC.pointsText.gameObject.SetActive (false);
+			GC.lifeCountText.gameObject.SetActive (false);
+			GC.timePlayedText.gameObject.SetActive (false);
+			GC.timeImage.gameObject.SetActive (false);
+			GC.pointsImage.gameObject.SetActive (false);
+			GC.heartImage.gameObject.SetActive (false);
+			GC.QuitButton.gameObject.SetActive (true);
 
 
 			if (lifes > 0) {
 				if (lifes == 1) {
-					GC.losingText.text = "¡Oh no! Te queda " + lifes.ToString () + " vida. ¿Quieres intentar de nuevo?";
+					//GC.losingText.text = "¡Oh no! Te queda " + lifes.ToString () + " vida. ¿Quieres intentar de nuevo?";
 				} else {
-					GC.losingText.text = "¡Oh no! Te quedan " + lifes.ToString () + " vidas. ¿Quieres intentar de nuevo?";
+					//GC.losingText.text = "¡Oh no! Te quedan " + lifes.ToString () + " vidas. ¿Quieres intentar de nuevo?";
 				}
 			} else {
-				GC.losingText.fontSize = 65;
+				//GC.losingText.fontSize = 65;
 				GC.lifeCountText.gameObject.SetActive (false);
-				GC.losingText.text = "No te quedan mas vidas. ¡Ingresa mas cupones en la pagina para redimir mas!";
+				GC.tryAgainButton.gameObject.SetActive (false);
+				GC.QuitButton.gameObject.SetActive (false);
+				GC.FinalQuitButton.gameObject.SetActive (true);
+				//GC.losingText.text = "No te quedan mas vidas. ¡Ingresa mas cupones en la pagina para redimir mas!";
 				Debug.Log (Time.realtimeSinceStartup);
 				totalGameTime = Time.realtimeSinceStartup;
 			}
 
 
 
-			GC.losingText.gameObject.SetActive (true);
+			//GC.losingText.gameObject.SetActive (true);
 			GC.tryAgainButton.gameObject.SetActive (true);
 
 			if (lifes == 0) {
@@ -133,7 +143,18 @@ public class CharacterScript : MonoBehaviour
 		IsDead = false;
 		IsGrounded = false;
 		GC.lifeCountText.text = "x" + lifes.ToString ();
-		GC.losingText.gameObject.SetActive (false);
+		//GC.losingText.gameObject.SetActive (false);
+		GC.tryAgainScreen.gameObject.SetActive(false);
 		GC.tryAgainButton.gameObject.SetActive (false);
+		GC.usernameText.gameObject.SetActive (false);
+		GC.pointsText.gameObject.SetActive (true);
+		GC.lifeCountText.gameObject.SetActive (true);
+		GC.timePlayedText.gameObject.SetActive (true);
+		GC.timeImage.gameObject.SetActive (true);
+		GC.pointsImage.gameObject.SetActive (true);
+		GC.heartImage.gameObject.SetActive (true);
+		GC.pointsWhenLost.gameObject.SetActive (false);
+		GC.QuitButton.gameObject.SetActive (false);
+		GC.FinalQuitButton.gameObject.SetActive (false);
 	}
 }
