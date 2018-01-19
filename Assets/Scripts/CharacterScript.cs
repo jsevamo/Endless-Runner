@@ -30,7 +30,7 @@ public class CharacterScript : MonoBehaviour
 		totalGameTime = 0;
 
 		GC = GameObject.Find ("GameController").GetComponent<GameController> ();
-		GC.lifeCountText.text = "X " + lifes.ToString ();
+		GC.lifeCountText.text = "x" + lifes.ToString ();
 		GC.losingText.gameObject.SetActive (false);
 		GC.tryAgainButton.gameObject.SetActive (false);
 		
@@ -132,7 +132,7 @@ public class CharacterScript : MonoBehaviour
 		hasReseted = true;
 		IsDead = false;
 		IsGrounded = false;
-		GC.lifeCountText.text = "X " + lifes.ToString ();
+		GC.lifeCountText.text = "x" + lifes.ToString ();
 		GC.losingText.gameObject.SetActive (false);
 		GC.tryAgainButton.gameObject.SetActive (false);
 	}

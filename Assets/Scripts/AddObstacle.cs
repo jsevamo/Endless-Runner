@@ -64,7 +64,7 @@ public class AddObstacle : MonoBehaviour {
 			
 			yield return new WaitForSeconds (timeForSpawn);
 
-			GameObject newObstacle = Instantiate (obstacle, new Vector3 (Random.Range(10,12), -3.75f, -1), Quaternion.identity) as GameObject;
+			GameObject newObstacle = Instantiate (obstacle, new Vector3 (Random.Range(10,12), -2.5f, -1), Quaternion.identity) as GameObject;
 			obstacleList.Add (newObstacle);
 			boxCount++;
 		}
@@ -77,7 +77,7 @@ public class AddObstacle : MonoBehaviour {
 
 			yield return new WaitForSeconds (Random.Range (5, 15));
 
-			GameObject newCollectible = Instantiate(collectible, new Vector3 (Random.Range(10,12), Random.Range(-1f,0.5f), -1), Quaternion.identity) as GameObject;
+			GameObject newCollectible = Instantiate(collectible, new Vector3 (Random.Range(10,12), Random.Range(-0.5f,1f), -1), Quaternion.identity) as GameObject;
 			collectibleList.Add (newCollectible);
 			collectCount++;
 		}
