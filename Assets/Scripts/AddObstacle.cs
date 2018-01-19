@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class AddObstacle : MonoBehaviour {
 
-	public GameObject obstacle;
+	public GameObject obstacle1;
+	public GameObject obstacle2;
+	public GameObject obstacle3;
 
 	public GameObject collectible1;
 	public GameObject collectible2;
@@ -66,12 +68,36 @@ public class AddObstacle : MonoBehaviour {
 	IEnumerator addObjects()
 	{
 		for (int i = 0; i < timeForRun; i++) {
-			
-			yield return new WaitForSeconds (timeForSpawn);
 
-			GameObject newObstacle = Instantiate (obstacle, new Vector3 (Random.Range(10,12), -2.5f, -1), Quaternion.identity) as GameObject;
-			obstacleList.Add (newObstacle);
-			boxCount++;
+			float decideWhichEnemy = Mathf.Round (Random.Range (1, 4));
+
+			if (decideWhichEnemy == 1) {
+				
+				yield return new WaitForSeconds (timeForSpawn);
+
+				GameObject newObstacle = Instantiate (obstacle1, new Vector3 (Random.Range (10, 12), -2.0f, -1), Quaternion.identity) as GameObject;
+				obstacleList.Add (newObstacle);
+				boxCount++;
+
+			} else if (decideWhichEnemy == 2) {
+
+				yield return new WaitForSeconds (timeForSpawn);
+
+				GameObject newObstacle = Instantiate (obstacle2, new Vector3 (Random.Range (10, 12), -2.0f, -1), Quaternion.identity) as GameObject;
+				obstacleList.Add (newObstacle);
+				boxCount++;
+
+			} else if (decideWhichEnemy >= 2.1 && decideWhichEnemy <=3) {
+
+				yield return new WaitForSeconds (timeForSpawn);
+
+				GameObject newObstacle = Instantiate (obstacle3, new Vector3 (Random.Range (10, 12), -2.0f, -1), Quaternion.identity) as GameObject;
+				obstacleList.Add (newObstacle);
+				boxCount++;
+
+			}
+			
+
 		}
 
 	}
