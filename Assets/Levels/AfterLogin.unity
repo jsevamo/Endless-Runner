@@ -356,7 +356,7 @@ RectTransform:
   m_GameObject: {fileID: 303075828}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.29, y: 0.29, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 58069873}
   m_Father: {fileID: 1886739851}
@@ -364,7 +364,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -280.67017, y: -157.15}
+  m_AnchoredPosition: {x: -275.8, y: -157.15}
   m_SizeDelta: {x: 912, y: 256}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &303075830
@@ -582,6 +582,12 @@ Prefab:
       value: 
       objectReference: {fileID: 1805994640675028, guid: 5bf4082ab49bf4c468aaf2a371f374af,
         type: 2}
+    - target: {fileID: 114616331322847282, guid: 74056ea455394446a9c62229e9c2c338,
+        type: 2}
+      propertyPath: MenuAudio
+      value: 
+      objectReference: {fileID: 1073210578692262, guid: 9f78fc52c32184bee997be58aa681e44,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 74056ea455394446a9c62229e9c2c338, type: 2}
   m_IsPrefabParent: 0
@@ -625,7 +631,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -280.67017, y: -73.22}
+  m_AnchoredPosition: {x: -278.9, y: -73.22}
   m_SizeDelta: {x: 912, y: 256}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1236259491

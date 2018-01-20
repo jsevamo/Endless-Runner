@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\InstructionsScript.cs" />
      <Compile Include="Assets\Scripts\LoadLevel.cs" />
+     <Compile Include="Assets\Scripts\MyUnitySingleton.cs" />
      <Compile Include="Assets\Scripts\ScrollBackground.cs" />
      <Compile Include="Assets\Scripts\ScrollBGNOT.cs" />
  <Reference Include="UnityEngine.UI">

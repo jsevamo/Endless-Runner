@@ -41,9 +41,10 @@ public class CharacterScript : MonoBehaviour
 
 		if (IsGrounded == true) {
 
-			if (Input.GetButtonDown ("Fire1")) {
+			if (Input.GetButtonDown ("Fire1") && GC.canJump) {
 				rb.AddForce (force);
 				IsGrounded = false;
+
 			}
 
 		} else {
@@ -138,7 +139,7 @@ public class CharacterScript : MonoBehaviour
 	{
 		force = new Vector2 (0, JumpForce);
 		rb.velocity = Vector3.zero;
-		transform.position = new Vector3 (-6.44f, 1.6f, -1f);
+		transform.position = new Vector3 (-4.54f, 1.94f, -1f);
 		hasReseted = true;
 		IsDead = false;
 		IsGrounded = false;

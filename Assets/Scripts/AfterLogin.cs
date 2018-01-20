@@ -17,16 +17,27 @@ public class AfterLogin : MonoBehaviour {
 	public GameObject Instructions;
 	InstructionsScript instructions;
 
+
+	AudioSource menuAudio;
+
+
 	// Use this for initialization
 	void Start () {
 		gc = GC.GetComponent<GameController> ();
 		player = Player.GetComponent<CharacterScript> ();
 		instructions = Instructions.GetComponent<InstructionsScript> ();
+
+		menuAudio = GameObject.Find ("Soundtrack").GetComponent<AudioSource> ();
+
+		if (menuAudio.isPlaying == false) {
+			menuAudio.Play ();
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+
 	}
 
 	public void loadFullGame()

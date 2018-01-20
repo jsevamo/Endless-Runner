@@ -28,6 +28,7 @@ public class LoadLevel : MonoBehaviour {
 
 	public string inputUsername;
 	public string passWord;
+	AudioSource menuAudio;
 
 	// Use this for initialization
 	void Start () {
@@ -37,6 +38,7 @@ public class LoadLevel : MonoBehaviour {
 		player = Player.GetComponent<CharacterScript> ();
 		gc = GC.GetComponent<GameController> ();
 		gclogin = GCLogin.GetComponent<AfterLogin> ();
+		menuAudio = GameObject.Find ("Soundtrack").GetComponent<AudioSource> ();
 		
 
 		User1.Add ("j_sevamo"); //Username
@@ -56,7 +58,9 @@ public class LoadLevel : MonoBehaviour {
 
 		//InputUsuario.asteriskChar = "$!£%&*"[0];
 
-
+		if (menuAudio.isPlaying == false) {
+			menuAudio.Play ();
+		}
 
 
 

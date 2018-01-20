@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour {
 	public GameObject pointsImage;
 	public GameObject timeImage;
 	public Text pointsWhenLost;
+	public GameObject muteOn;
 
 	[HideInInspector] public float TotalPoints;
 	[HideInInspector] public float HighScore;
@@ -47,15 +48,21 @@ public class GameController : MonoBehaviour {
 	public GameObject AfterLog;
 	AfterLogin afterlog;
 
+	AudioSource menuAudio;
+	AudioSource gameAudio;
 
-
+	public bool canJump;
 
 	// Use this for initialization
 	void Start () {
 		
 		Time.timeScale = 1f;
-
+		menuAudio = GameObject.Find ("Soundtrack").GetComponent<AudioSource> ();
+		gameAudio = GameObject.Find ("gameSountrack").GetComponent<AudioSource> ();
 		afterlog = AfterLog.GetComponent<AfterLogin> ();
+
+		menuAudio.Stop ();
+		canJump = true;
 
 		timeForRun = 999999999;
 		timePlayed = 0;
@@ -138,8 +145,13 @@ public class GameController : MonoBehaviour {
 			
 		resetSaveData ();
 
+		if (Input.mousePosition.x > 0 && Input.mousePosition.x < 144 && Input.mousePosition.y > 648 && Input.mousePosition.y < 745) {
+			canJump = false;
+		} else {
+			canJump = true;
+		}
 
-		
+
 	}
 
 
@@ -203,6 +215,7 @@ public class GameController : MonoBehaviour {
 			afterlog.lifes = character.lifes;
 			afterlog.username = userName;
 			SceneManager.LoadScene ("AfterLogin");
+
 		} else {
 			SceneManager.LoadScene ("MainMenu");
 		}
@@ -222,6 +235,22 @@ public class GameController : MonoBehaviour {
 	public void exitGameWhenDead()
 	{
 		SceneManager.LoadScene ("MainMenu");
+	}
+
+	public void MuteGame()
+	{
+		
+		gameAudio.Stop ();
+		muteOn.gameObject.SetActive (true);
+
+	}
+
+	public void MuteGameOff()
+	{
+		
+		gameAudio.Play();
+		muteOn.gameObject.SetActive (false);
+
 	}
 
 
