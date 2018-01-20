@@ -51,7 +51,7 @@ public class CharacterScript : MonoBehaviour
 		}
 
 
-
+		Debug.Log (totalGameTime);
 
 			
 	}
@@ -97,8 +97,8 @@ public class CharacterScript : MonoBehaviour
 				GC.QuitButton.gameObject.SetActive (false);
 				GC.FinalQuitButton.gameObject.SetActive (true);
 				//GC.losingText.text = "No te quedan mas vidas. ¡Ingresa mas cupones en la pagina para redimir mas!";
-				Debug.Log (Time.realtimeSinceStartup);
-				totalGameTime = Time.realtimeSinceStartup;
+				//Debug.Log (Time.realtimeSinceStartup);
+				totalGameTime = Time.deltaTime;
 			}
 
 

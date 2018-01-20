@@ -40,7 +40,7 @@ public class LoadLevel : MonoBehaviour {
 		
 
 		User1.Add ("j_sevamo"); //Username
-		User1.Add ("3"); //Vidas
+		User1.Add ("2"); //Vidas
 		User1.Add ("nomejoda"); //password
 
 		User2.Add ("felipito");

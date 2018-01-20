@@ -574,7 +574,7 @@ Prefab:
         type: 2}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 1502333994255106, guid: 6d68c721bd57c4e178f17b51f2321ba8,
+      objectReference: {fileID: 1122503599270496, guid: 343be565923974464ba34764035555dd,
         type: 2}
     - target: {fileID: 114616331322847282, guid: 74056ea455394446a9c62229e9c2c338,
         type: 2}

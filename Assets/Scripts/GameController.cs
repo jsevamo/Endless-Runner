@@ -37,13 +37,21 @@ public class GameController : MonoBehaviour {
 
 	public string userName = "user";
 
+	int timePlayed;
+	bool coroutinePlaying;
+	int timeForRun;
+
 
 
 
 
 	// Use this for initialization
 	void Start () {
-		
+
+		timeForRun = 999999999;
+		timePlayed = 0;
+		coroutinePlaying = false;
+		StartCoroutine(countOneSecond());
 		hightScoreText.gameObject.SetActive (false);
 		usernameText.gameObject.SetActive (false);
 		tryAgainScreen.SetActive (false);
@@ -78,16 +86,30 @@ public class GameController : MonoBehaviour {
 
 		
 	}
+
+	IEnumerator countOneSecond()
+	{
+
+		for (int i = 0; i < timeForRun; i++) {
+			yield return new WaitForSeconds (1);
+			timePlayed++;
+		}
+
+	}
 	
 	// Update is called once per frame
 	void Update () {
 
 
+		//Debug.Log (timePlayed);
+
+
 
 		if (character.IsDead) {
-
+			
+			oneHundred.gameObject.SetActive(false);
 			tryAgainScreen.SetActive (true);
-
+			timePlayed = 0;
 			pointsWhenLost.text = Mathf.Round(TotalPoints).ToString ();
 			pointsWhenLost.gameObject.SetActive (true);
 
@@ -104,7 +126,7 @@ public class GameController : MonoBehaviour {
 			setUI ();
 		}
 
-		timePlayedText.text = (Mathf.Round(Time.realtimeSinceStartup)).ToString() + "s";
+		timePlayedText.text = (timePlayed).ToString() + "s";
 			
 		resetSaveData ();
 
