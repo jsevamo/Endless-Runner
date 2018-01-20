@@ -7,11 +7,12 @@ public class ScrollBackground : MonoBehaviour {
 	public float speed = 0.1f;
 	Renderer rend;
 
+
 	// Use this for initialization
 	void Start () {
 
 		rend = GetComponent<Renderer> ();
-		
+
 	}
 	
 	// Update is called once per frame
@@ -21,4 +22,6 @@ public class ScrollBackground : MonoBehaviour {
 		rend.material.mainTextureOffset = offset;
 		
 	}
+
+
 }

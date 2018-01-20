@@ -211,21 +211,27 @@ public class AddObstacle : MonoBehaviour {
 
 		timeForSpawn = 2.5f;
 		Time.timeScale = 1f;
+
+		GC.School1BG.gameObject.SetActive (true);
+		GC.School2BG.gameObject.SetActive (true);
 	}
 
 	void SetDifficulty()
 	{
 		if (GC.TotalPoints > 100 && GC.TotalPoints < 700) {
 			timeForSpawn = 1.8f;
+
 		} else if (GC.TotalPoints > 701 && GC.TotalPoints < 1000) {
-			GC.School1BG.gameObject.SetActive (false);
+			
 			timeForSpawn = Random.Range (0.9f, 2.5f);
 		} else if (GC.TotalPoints > 1001 && GC.TotalPoints < 1500) {
 			timeForSpawn = Random.Range (0.9f, 2.5f);
+			GC.School1BG.gameObject.SetActive (false);
 		} else if (GC.TotalPoints > 1501 && GC.TotalPoints < 2000) {
 			if (!character.IsDead) {
 				Time.timeScale = 1.1f;
 				timeForSpawn = Random.Range (0.85f, 2.5f);
+
 			}
 		} else if (GC.TotalPoints > 2001 && GC.TotalPoints < 3000) {
 			if (!character.IsDead) {
@@ -249,6 +255,7 @@ public class AddObstacle : MonoBehaviour {
 			if (!character.IsDead) {
 				Time.timeScale = 1.5f;
 				timeForSpawn = Random.Range (0.85f, 2.5f);
+				GC.School2BG.gameObject.SetActive (false);
 			}
 		}
 		else if (GC.TotalPoints > 5001 && GC.TotalPoints < 6000) {

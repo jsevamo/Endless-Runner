@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AddObstacle.cs" />
      <Compile Include="Assets\Scripts\AfterLogin.cs" />
+     <Compile Include="Assets\Scripts\BG1.cs" />
      <Compile Include="Assets\Scripts\CharacterScript.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\InstructionsScript.cs" />
