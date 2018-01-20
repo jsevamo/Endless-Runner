@@ -44,11 +44,16 @@ public class GameController : MonoBehaviour {
 	public GameObject School2BG;
 	public GameObject School3BG;
 
+	public GameObject AfterLog;
+	AfterLogin afterlog;
+
 
 
 
 	// Use this for initialization
 	void Start () {
+
+		afterlog = AfterLog.GetComponent<AfterLogin> ();
 
 		timeForRun = 999999999;
 		timePlayed = 0;
@@ -187,6 +192,14 @@ public class GameController : MonoBehaviour {
 	{
 		wantToTryAgain = true;
 
+	}
+
+	public void exitGame()
+	{
+		character.lifes--;
+		afterlog.lifes = character.lifes;
+		afterlog.username = userName;
+		SceneManager.LoadScene ("AfterLogin");
 	}
 
 

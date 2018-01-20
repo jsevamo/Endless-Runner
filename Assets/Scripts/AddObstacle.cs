@@ -119,7 +119,7 @@ public class AddObstacle : MonoBehaviour {
 				
 				yield return new WaitForSeconds (Random.Range (5, 15));
 
-				GameObject newCollectible = Instantiate (collectible1, new Vector3 (Random.Range (10, 12), Random.Range (-0.2f, 2f), -1), Quaternion.identity) as GameObject;
+				GameObject newCollectible = Instantiate (collectible1, new Vector3 (Random.Range (10, 12), Random.Range (1f, 2.5f), -1), Quaternion.identity) as GameObject;
 				collectibleList.Add (newCollectible);
 				collectCount++;
 
@@ -127,7 +127,7 @@ public class AddObstacle : MonoBehaviour {
 
 				yield return new WaitForSeconds (Random.Range (5, 15));
 
-				GameObject newCollectible = Instantiate (collectible2, new Vector3 (Random.Range (10, 12), Random.Range (-0.2f, 2f), -1), Quaternion.identity) as GameObject;
+				GameObject newCollectible = Instantiate (collectible2, new Vector3 (Random.Range (10, 12), Random.Range (1f, 2.5f), -1), Quaternion.identity) as GameObject;
 				collectibleList.Add (newCollectible);
 				collectCount++;
 
@@ -135,7 +135,7 @@ public class AddObstacle : MonoBehaviour {
 
 				yield return new WaitForSeconds (Random.Range (5, 15));
 
-				GameObject newCollectible = Instantiate (collectible3, new Vector3 (Random.Range (10, 12), Random.Range (-0.2f, 2f), -1), Quaternion.identity) as GameObject;
+				GameObject newCollectible = Instantiate (collectible3, new Vector3 (Random.Range (10, 12), Random.Range (1f, 2.5f), -1), Quaternion.identity) as GameObject;
 				collectibleList.Add (newCollectible);
 				collectCount++;
 
@@ -143,7 +143,7 @@ public class AddObstacle : MonoBehaviour {
 
 				yield return new WaitForSeconds (Random.Range (5, 15));
 
-				GameObject newCollectible = Instantiate (collectible4, new Vector3 (Random.Range (10, 12), Random.Range (-0.2f, 2f), -1), Quaternion.identity) as GameObject;
+				GameObject newCollectible = Instantiate (collectible4, new Vector3 (Random.Range (10, 12), Random.Range (1f, 2.5f), -1), Quaternion.identity) as GameObject;
 				collectibleList.Add (newCollectible);
 				collectCount++;
 
@@ -256,6 +256,9 @@ public class AddObstacle : MonoBehaviour {
 				Time.timeScale = 1.5f;
 				timeForSpawn = Random.Range (0.85f, 2.5f);
 				GC.School2BG.gameObject.SetActive (false);
+				GC.pointsText.color = new Color32 (100, 100, 100, 255);
+				GC.lifeCountText.color = new Color32(100, 100, 100, 255);
+				GC.timePlayedText.color = new Color32 (100, 100, 100, 255);
 			}
 		}
 		else if (GC.TotalPoints > 5001 && GC.TotalPoints < 6000) {
