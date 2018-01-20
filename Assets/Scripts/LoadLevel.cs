@@ -13,7 +13,7 @@ public class LoadLevel : MonoBehaviour {
 
 	bool canStart;
 
-	public InputField InputUsuario;
+	//public InputField InputUsuario;
 	public Text Sorry;
 	public GameObject Player;
 	public GameObject GC;
@@ -21,20 +21,27 @@ public class LoadLevel : MonoBehaviour {
 	GameController gc;
 	int index;
 	public GUIStyle guiStyle = new GUIStyle();
+	//public GameObject afterLoginScreen;
 
-	public string userName;
+	public GameObject GCLogin;
+	AfterLogin gclogin;
+
+	public string inputUsername;
 	public string passWord;
 
 	// Use this for initialization
 	void Start () {
 
+		//afterLoginScreen.gameObject.SetActive (false);
+
 		player = Player.GetComponent<CharacterScript> ();
 		gc = GC.GetComponent<GameController> ();
+		gclogin = GCLogin.GetComponent<AfterLogin> ();
 		
 
 		User1.Add ("j_sevamo"); //Username
-		User1.Add ("1"); //Vidas
-		User1.Add ("carne"); //password
+		User1.Add ("3"); //Vidas
+		User1.Add ("nomejoda"); //password
 
 		User2.Add ("felipito");
 		User2.Add ("11");
@@ -47,7 +54,7 @@ public class LoadLevel : MonoBehaviour {
 
 		Sorry.gameObject.SetActive (false);
 
-		InputUsuario.asteriskChar = "$!£%&*"[0];
+		//InputUsuario.asteriskChar = "$!£%&*"[0];
 
 
 
@@ -58,8 +65,9 @@ public class LoadLevel : MonoBehaviour {
 
 	void OnGUI()
 	{
-		guiStyle.fontSize = 28; //change the font size
-		passWord = GUI.PasswordField (new Rect (Screen.width / 2 - 343.74f / 2, Screen.height / 2 + 30, 343.74f, 50), passWord, "*" [0], 25, guiStyle);
+		guiStyle.fontSize = 20; //change the font size
+		inputUsername = GUI.TextField(new Rect(710, 400, 300, 20), inputUsername, 25, guiStyle);
+		passWord = GUI.PasswordField (new Rect (710, 470, 300, 20), passWord, "*" [0], 25, guiStyle);
 	}
 	
 	// Update is called once per frame
@@ -71,7 +79,7 @@ public class LoadLevel : MonoBehaviour {
 	public void loadGame()
 	{
 
-		string givenName = InputUsuario.text;
+		string givenName = inputUsername;
 
 
 		for (int i = 0; i < Users.Count; i++) {
@@ -87,7 +95,12 @@ public class LoadLevel : MonoBehaviour {
 		if (canStart) {
 			gc.userName = givenName;
 			player.lifes = int.Parse(Users [index] [1]);
-			SceneManager.LoadScene ("Runner");
+
+			gclogin.username = givenName;
+			gclogin.lifes = int.Parse(Users [index] [1]);
+
+			SceneManager.LoadScene ("AfterLogin");
+
 		} else {
 			Sorry.gameObject.SetActive (true);
 		}
