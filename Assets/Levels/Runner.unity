@@ -1133,25 +1133,25 @@ Prefab:
         type: 2}
       propertyPath: collectible1
       value: 
-      objectReference: {fileID: 1496722090817130, guid: 911c19571ae4448d795ede9e61dcf304,
+      objectReference: {fileID: 1125992270521536, guid: 2ba7e40b83f86478ead7f073e9d6e32c,
         type: 2}
     - target: {fileID: 114405011335652026, guid: b4e3f23a7cca54cbf9e23ebf4df936db,
         type: 2}
       propertyPath: collectible2
       value: 
-      objectReference: {fileID: 1108396573435120, guid: 9338303f7184a48cba185468985d6d1a,
+      objectReference: {fileID: 1268529775609278, guid: ac07bc48ec45748ccaa48d17ca23e448,
         type: 2}
     - target: {fileID: 114405011335652026, guid: b4e3f23a7cca54cbf9e23ebf4df936db,
         type: 2}
       propertyPath: collectible3
       value: 
-      objectReference: {fileID: 1757334568443218, guid: b192f19eb77614754995e35d3ef729a2,
+      objectReference: {fileID: 1894275376314836, guid: 09149de1df41a47dfb7fcd9b7fa41c8e,
         type: 2}
     - target: {fileID: 114405011335652026, guid: b4e3f23a7cca54cbf9e23ebf4df936db,
         type: 2}
       propertyPath: collectible4
       value: 
-      objectReference: {fileID: 1133437273432414, guid: 5b96aa7f092914611b86ec70d9b68b4c,
+      objectReference: {fileID: 1210756802758294, guid: b83cfe95844d9437c9b17bc205eb8329,
         type: 2}
     - target: {fileID: 114405011335652026, guid: b4e3f23a7cca54cbf9e23ebf4df936db,
         type: 2}
@@ -1390,7 +1390,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1340093827243900, guid: 039b4ecd75083462a903f8c78cb2774e, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 039b4ecd75083462a903f8c78cb2774e, type: 2}
