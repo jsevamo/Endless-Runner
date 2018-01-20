@@ -114,12 +114,8 @@ public class GameController : MonoBehaviour {
 
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
-
-
-		//Debug.Log (timePlayed);
-
 
 
 		if (character.IsDead) {
@@ -153,7 +149,7 @@ public class GameController : MonoBehaviour {
 			canJump = true;
 		}
 
-
+		//Debug.Log (getUsername() + " " + getlifes() + " " + getPoints() + " " + getHighscore());
 	}
 
 
@@ -253,6 +249,27 @@ public class GameController : MonoBehaviour {
 		gameAudio.Play();
 		muteOn.gameObject.SetActive (false);
 
+	}
+
+	public string getlifes()
+	{
+		return character.lifes.ToString ();
+	}
+
+	public string getUsername()
+	{
+		return userName;
+	}
+
+	public string getPoints()
+	{
+		
+		return Mathf.Round(TotalPoints).ToString ();
+	}
+
+	public string getHighscore()
+	{
+		return Mathf.Round(HighScore).ToString ();
 	}
 
 
