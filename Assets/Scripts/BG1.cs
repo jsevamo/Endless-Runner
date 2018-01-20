@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BG1 : MonoBehaviour {
 
-	public float fadeSpeed = 1f;    
+	/*public float fadeSpeed = 1f;    
 	public Color fadeColor = new Color (0, 0, 0, 0);
 
 	private Material m_Material;    
@@ -67,7 +67,7 @@ public class BG1 : MonoBehaviour {
 			yield return null;
 		}
 	}
-
+*/
 
 
 }

@@ -53,6 +53,8 @@ public class GameController : MonoBehaviour {
 
 	public bool canJump;
 
+	public GameObject ExitCorner;
+
 	// Use this for initialization
 	void Start () {
 		

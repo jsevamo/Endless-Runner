@@ -14,6 +14,7 @@ public class CharacterScript : MonoBehaviour
 	public bool hasReseted;
 	public int lifes = 3;
 	GameController GC;
+	AudioSource grabbedCoin;
 
 	[HideInInspector] public float totalGameTime;
 
@@ -23,6 +24,7 @@ public class CharacterScript : MonoBehaviour
 
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
+		grabbedCoin = GetComponent<AudioSource> ();
 		IsGrounded = false;
 		IsDead = false;
 		hasReseted = false;
@@ -83,6 +85,8 @@ public class CharacterScript : MonoBehaviour
 			GC.pointsImage.gameObject.SetActive (false);
 			GC.heartImage.gameObject.SetActive (false);
 			GC.QuitButton.gameObject.SetActive (true);
+			GC.ExitCorner.gameObject.SetActive (false);
+
 
 
 			if (lifes > 0) {
@@ -113,6 +117,7 @@ public class CharacterScript : MonoBehaviour
 		} 
 
 		if (other.gameObject.CompareTag ("Collectible")) {
+			grabbedCoin.Play ();
 			other.gameObject.SetActive (false);
 			GC.oneHundred.gameObject.SetActive (true);
 			GC.grabbedCollect = true;
@@ -157,5 +162,6 @@ public class CharacterScript : MonoBehaviour
 		GC.pointsWhenLost.gameObject.SetActive (false);
 		GC.QuitButton.gameObject.SetActive (false);
 		GC.FinalQuitButton.gameObject.SetActive (false);
+		GC.ExitCorner.gameObject.SetActive (true);
 	}
 }
