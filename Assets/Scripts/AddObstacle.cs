@@ -218,6 +218,7 @@ public class AddObstacle : MonoBehaviour {
 		if (GC.TotalPoints > 100 && GC.TotalPoints < 700) {
 			timeForSpawn = 1.8f;
 		} else if (GC.TotalPoints > 701 && GC.TotalPoints < 1000) {
+			GC.School1BG.gameObject.SetActive (false);
 			timeForSpawn = Random.Range (0.9f, 2.5f);
 		} else if (GC.TotalPoints > 1001 && GC.TotalPoints < 1500) {
 			timeForSpawn = Random.Range (0.9f, 2.5f);

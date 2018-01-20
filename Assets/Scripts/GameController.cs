@@ -38,9 +38,11 @@ public class GameController : MonoBehaviour {
 	public string userName = "user";
 
 	int timePlayed;
-	bool coroutinePlaying;
 	int timeForRun;
 
+	public GameObject School1BG;
+	public GameObject School2BG;
+	public GameObject School3BG;
 
 
 
@@ -50,7 +52,6 @@ public class GameController : MonoBehaviour {
 
 		timeForRun = 999999999;
 		timePlayed = 0;
-		coroutinePlaying = false;
 		StartCoroutine(countOneSecond());
 		hightScoreText.gameObject.SetActive (false);
 		usernameText.gameObject.SetActive (false);
