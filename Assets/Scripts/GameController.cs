@@ -52,6 +52,8 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
+		Time.timeScale = 1f;
 
 		afterlog = AfterLog.GetComponent<AfterLogin> ();
 
@@ -196,10 +198,30 @@ public class GameController : MonoBehaviour {
 
 	public void exitGame()
 	{
-		character.lifes--;
+		if (character.lifes > 1) {
+			character.lifes--;
+			afterlog.lifes = character.lifes;
+			afterlog.username = userName;
+			SceneManager.LoadScene ("AfterLogin");
+		} else {
+			SceneManager.LoadScene ("MainMenu");
+		}
+
+
+
+	}
+
+	public void exitGameWithLifes()
+	{
+		
 		afterlog.lifes = character.lifes;
 		afterlog.username = userName;
 		SceneManager.LoadScene ("AfterLogin");
+	}
+
+	public void exitGameWhenDead()
+	{
+		SceneManager.LoadScene ("MainMenu");
 	}
 
 

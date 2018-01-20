@@ -23,8 +23,12 @@ public class InstructionsScript : MonoBehaviour {
 	public GameObject pointslogo;
 	public GameObject ipadlogo;
 
+	public GameObject AfterLogin;
+	AfterLogin afterlogin;
+
 	// Use this for initialization
 	void Start () {
+		afterlogin = AfterLogin.GetComponent<AfterLogin> ();
 		pageNumber = 1;
 		gc = GC.GetComponent<GameController> ();
 		player = Player.GetComponent<CharacterScript> ();
@@ -88,6 +92,14 @@ public class InstructionsScript : MonoBehaviour {
 		if (pageNumber < 1) {
 			pageNumber = 3;
 		}
+	}
+
+	public void exitInstructions()
+	{
+		afterlogin.lifes = lifes;
+		afterlogin.username = username;
+		SceneManager.LoadScene ("AfterLogin");
+
 	}
 
 
