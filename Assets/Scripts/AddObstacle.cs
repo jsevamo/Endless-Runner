@@ -214,6 +214,10 @@ public class AddObstacle : MonoBehaviour {
 
 		GC.School1BG.gameObject.SetActive (true);
 		GC.School2BG.gameObject.SetActive (true);
+
+		GC.pointsText.color = new Color32 (231, 231, 231, 255);
+		GC.lifeCountText.color = new Color32(231, 231, 231, 255);
+		GC.timePlayedText.color = new Color32 (231, 231, 231, 255);
 	}
 
 	void SetDifficulty()
