@@ -25,6 +25,8 @@ public class GameController : MonoBehaviour {
 	public Text pointsWhenLost;
 	public GameObject muteOn;
 
+	public string token;
+
 	[HideInInspector] public float TotalPoints;
 	[HideInInspector] public float HighScore;
 	int numberOfTries;
@@ -125,6 +127,8 @@ public class GameController : MonoBehaviour {
 			timePlayed = 0;
 			pointsWhenLost.text = Mathf.Round(TotalPoints).ToString ();
 			pointsWhenLost.gameObject.SetActive (true);
+
+			//COLOCAR EL PUTO CODIGO ACÁ
 
 			if (wantToTryAgain) {
 				

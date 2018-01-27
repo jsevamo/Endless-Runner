@@ -24,7 +24,7 @@ public class AddObstacle : MonoBehaviour {
 	float timeForSpawn = 2.5f;
 
 
-
+	int a=0;
 
 
 
@@ -65,8 +65,11 @@ public class AddObstacle : MonoBehaviour {
 		}
 
 		SetDifficulty ();
+	
 
 	}
+
+
 
 
 

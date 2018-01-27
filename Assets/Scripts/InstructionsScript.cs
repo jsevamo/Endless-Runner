@@ -26,6 +26,8 @@ public class InstructionsScript : MonoBehaviour {
 	public GameObject AfterLogin;
 	AfterLogin afterlogin;
 
+	public string token;
+
 	// Use this for initialization
 	void Start () {
 		afterlogin = AfterLogin.GetComponent<AfterLogin> ();
@@ -75,6 +77,7 @@ public class InstructionsScript : MonoBehaviour {
 	{
 		gc.userName = username;
 		player.lifes = lifes;
+		gc.token = token;
 		SceneManager.LoadScene ("Runner");
 	}
 
@@ -98,6 +101,7 @@ public class InstructionsScript : MonoBehaviour {
 	{
 		afterlogin.lifes = lifes;
 		afterlogin.username = username;
+		afterlogin.token = token;
 		SceneManager.LoadScene ("AfterLogin");
 
 	}

@@ -17,6 +17,7 @@ public class AfterLogin : MonoBehaviour {
 	public GameObject Instructions;
 	InstructionsScript instructions;
 
+	public string token;
 
 	AudioSource menuAudio;
 
@@ -44,6 +45,7 @@ public class AfterLogin : MonoBehaviour {
 	{
 		gc.userName = username;
 		player.lifes = lifes;
+		gc.token = token;
 		SceneManager.LoadScene ("Runner");
 	}
 
@@ -56,6 +58,7 @@ public class AfterLogin : MonoBehaviour {
 	{
 		instructions.username = username;
 		instructions.lifes = lifes;
+		instructions.token = token;
 		SceneManager.LoadScene ("Instructions");
 	}
 }

@@ -13,6 +13,8 @@ public class LoadLevel : MonoBehaviour {
 
 	bool canStart;
 
+	public string token;
+
 	//public InputField InputUsuario;
 	public Text Sorry;
 	public GameObject Player;
@@ -102,6 +104,8 @@ public class LoadLevel : MonoBehaviour {
 
 			gclogin.username = givenName;
 			gclogin.lifes = int.Parse(Users [index] [1]);
+
+			gclogin.token = token;
 
 			SceneManager.LoadScene ("AfterLogin");
 
