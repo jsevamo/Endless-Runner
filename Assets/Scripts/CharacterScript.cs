@@ -1,22 +1,24 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterScript : MonoBehaviour
 {
 
 	Rigidbody2D rb;
-	public int JumpForce = 1500;
+	public int JumpForce = 700;
 	Vector2 force;
 	public bool IsGrounded;
 	Animator anim;
 	public bool IsDead;
 	public bool hasReseted;
-	public int lifes = 3;
+	public int lifes = LoadLevel.profile.lifes;
 	GameController GC;
 	AudioSource grabbedCoin;
+	AudioSource lostMusic;
 
 	[HideInInspector] public float totalGameTime;
+
+
 
 	// Use this for initialization
 	void Start ()
@@ -25,6 +27,7 @@ public class CharacterScript : MonoBehaviour
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
 		grabbedCoin = GetComponent<AudioSource> ();
+		lostMusic = GameObject.Find ("MusicDeath").GetComponent<AudioSource> ();
 		IsGrounded = false;
 		IsDead = false;
 		hasReseted = false;
@@ -32,7 +35,7 @@ public class CharacterScript : MonoBehaviour
 		totalGameTime = 0;
 
 		GC = GameObject.Find ("GameController").GetComponent<GameController> ();
-		GC.lifeCountText.text = "x" + lifes.ToString ();
+		GC.lifeCountText.text = "x" + LoadLevel.profile.lifes.ToString ();
 		GC.tryAgainButton.gameObject.SetActive (false);
 		
 	}
@@ -43,21 +46,32 @@ public class CharacterScript : MonoBehaviour
 
 		if (IsGrounded == true) {
 
-			if (Input.GetButtonDown ("Fire1") && GC.canJump) {
-				rb.AddForce (force);
+			if (Input.GetButton("Fire1") && GC.canJump)  {
 				IsGrounded = false;
-
+				rb.AddForce (force, ForceMode2D.Impulse);
 			}
 
 		} else {
+			
 			anim.SetBool ("isJumping", true);
 		}
 
 
-		//Debug.Log (totalGameTime);
+		if (transform.position.y < -1.70f) {
+			IsGrounded = true;
+			anim.SetBool ("isJumping", false);
+		} else {
+			IsGrounded = false;
+		}
+
+		if (rb.velocity.y > 24f) {
+			rb.velocity = new Vector3(0, 24f, 0);
+		}
 
 			
 	}
+
+
 
 	void OnTriggerEnter2D (Collider2D other)
 	{
@@ -72,11 +86,12 @@ public class CharacterScript : MonoBehaviour
 		if (other.gameObject.CompareTag ("Obstacle")) {
 			//Debug.Log ("You died");
 
+			lostMusic.Play();
 			IsDead = true;
 			rb.velocity = Vector3.zero;
 			force = Vector2.zero;
 			Time.timeScale = 0f;
-			lifes--;
+            LoadLevel.profile.lifes--;
 			GC.usernameText.gameObject.SetActive (true);
 			GC.pointsText.gameObject.SetActive (false);
 			GC.lifeCountText.gameObject.SetActive (false);
@@ -89,8 +104,8 @@ public class CharacterScript : MonoBehaviour
 
 
 
-			if (lifes > 0) {
-				if (lifes == 1) {
+			if (LoadLevel.profile.lifes > 0) {
+				if (LoadLevel.profile.lifes == 1) {
 					//GC.losingText.text = "¡Oh no! Te queda " + lifes.ToString () + " vida. ¿Quieres intentar de nuevo?";
 				} else {
 					//GC.losingText.text = "¡Oh no! Te quedan " + lifes.ToString () + " vidas. ¿Quieres intentar de nuevo?";
@@ -111,7 +126,7 @@ public class CharacterScript : MonoBehaviour
 			//GC.losingText.gameObject.SetActive (true);
 			GC.tryAgainButton.gameObject.SetActive (true);
 
-			if (lifes == 0) {
+			if (LoadLevel.profile.lifes == 0) {
 				GC.tryAgainButton.gameObject.SetActive (false);
 			}
 		} 
@@ -148,7 +163,7 @@ public class CharacterScript : MonoBehaviour
 		hasReseted = true;
 		IsDead = false;
 		IsGrounded = false;
-		GC.lifeCountText.text = "x" + lifes.ToString ();
+		GC.lifeCountText.text = "x" + LoadLevel.profile.lifes.ToString ();
 		//GC.losingText.gameObject.SetActive (false);
 		GC.tryAgainScreen.gameObject.SetActive(false);
 		GC.tryAgainButton.gameObject.SetActive (false);

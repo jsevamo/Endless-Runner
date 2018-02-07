@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class AfterLogin : MonoBehaviour {
 
-	public string username;
-	public int lifes;
+	public string username = LoadLevel.profile.firstname;
+	public int lifes = LoadLevel.profile.lifes;
 
 	public GameObject GC;
 	GameController gc;
@@ -16,8 +16,6 @@ public class AfterLogin : MonoBehaviour {
 
 	public GameObject Instructions;
 	InstructionsScript instructions;
-
-	public string token;
 
 	AudioSource menuAudio;
 
@@ -43,9 +41,6 @@ public class AfterLogin : MonoBehaviour {
 
 	public void loadFullGame()
 	{
-		gc.userName = username;
-		player.lifes = lifes;
-		gc.token = token;
 		SceneManager.LoadScene ("Runner");
 	}
 
@@ -56,9 +51,6 @@ public class AfterLogin : MonoBehaviour {
 
 	public void instructionsGoto()
 	{
-		instructions.username = username;
-		instructions.lifes = lifes;
-		instructions.token = token;
 		SceneManager.LoadScene ("Instructions");
 	}
 }

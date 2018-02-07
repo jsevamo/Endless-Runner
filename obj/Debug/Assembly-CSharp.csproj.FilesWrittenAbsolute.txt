@@ -47,3 +47,7 @@
 /Users/j_sevamo/Desktop/Endless Runner/Temp/bin/Debug/Assembly-CSharp.dll
 /Users/j_sevamo/Desktop/Endless Runner/obj/Debug/Assembly-CSharp.dll
 /Users/j_sevamo/Desktop/Endless Runner/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/j_sevamo/Desktop/Endless Runner/obj/Debug/.NETFramework,Version=v4.6.AssemblyAttribute.cs
+/Users/j_sevamo/Desktop/Endless Runner/Temp/bin/Debug/UnityEditor.iOS.Extensions.dll
+/Users/j_sevamo/Desktop/Endless Runner/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll
+/Users/j_sevamo/Desktop/Endless Runner/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll.mdb

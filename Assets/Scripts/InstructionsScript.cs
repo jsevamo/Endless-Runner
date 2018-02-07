@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -8,8 +6,8 @@ public class InstructionsScript : MonoBehaviour {
 
 	int pageNumber;
 
-	public string username;
-	public int lifes;
+	public string username = LoadLevel.profile.firstname;
+	public int lifes = LoadLevel.profile.lifes;
 
 	public GameObject GC;
 	GameController gc;
@@ -22,11 +20,10 @@ public class InstructionsScript : MonoBehaviour {
 	public Text collectText;
 	public GameObject pointslogo;
 	public GameObject ipadlogo;
+	public GameObject arrowlogo;
 
 	public GameObject AfterLogin;
 	AfterLogin afterlogin;
-
-	public string token;
 
 	// Use this for initialization
 	void Start () {
@@ -52,6 +49,7 @@ public class InstructionsScript : MonoBehaviour {
 			pointslogo.gameObject.SetActive (false);
 			collectText.gameObject.SetActive (false);
 			ipadlogo.gameObject.SetActive (false);
+			arrowlogo.gameObject.SetActive (true);
 
 		} else if (pageNumber == 2) {
 
@@ -60,6 +58,7 @@ public class InstructionsScript : MonoBehaviour {
 			pointslogo.gameObject.SetActive (true);
 			collectText.gameObject.SetActive (false);
 			ipadlogo.gameObject.SetActive (false);
+			arrowlogo.gameObject.SetActive (false);
 
 		} else if (pageNumber == 3) {
 
@@ -68,6 +67,7 @@ public class InstructionsScript : MonoBehaviour {
 			pointslogo.gameObject.SetActive (false);
 			collectText.gameObject.SetActive (true);
 			ipadlogo.gameObject.SetActive (true);
+			arrowlogo.gameObject.SetActive (false);
 		} 
 
 		
@@ -75,9 +75,6 @@ public class InstructionsScript : MonoBehaviour {
 
 	public void loadFullGame()
 	{
-		gc.userName = username;
-		player.lifes = lifes;
-		gc.token = token;
 		SceneManager.LoadScene ("Runner");
 	}
 
@@ -99,9 +96,6 @@ public class InstructionsScript : MonoBehaviour {
 
 	public void exitInstructions()
 	{
-		afterlogin.lifes = lifes;
-		afterlogin.username = username;
-		afterlogin.token = token;
 		SceneManager.LoadScene ("AfterLogin");
 
 	}

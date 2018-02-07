@@ -1,4 +1,4 @@
-WebGL
+OSXStandalone
 SceneListBegin?
 Assets/Levels/MainMenu.unity
 Assets/Levels/AfterLogin.unity
@@ -83,7 +83,7 @@ c63db43c730fa2cbb8ca07de15898cb6 UnityEngine.UI.dll:UnityEngine.UI.Toggle
 f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 86d36c43c53541d667100dc90b89cfba UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
-5979c813079d4b2aca468eab7748587f Assembly-CSharp.dll:.InstructionsScript
+0bb2c7957c861e84c6bb1a56345e98df Assembly-CSharp.dll:.InstructionsScript
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -147,7 +147,7 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-700a9bce75e34ee982080ed1df3713af Assembly-CSharp.dll:.LoadLevel
+fcb880e8c5b1eeb1197ca3dacd7a5722 Assembly-CSharp.dll:.LoadLevel
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 00b0ce004eb374086fba27bb3f7c142c Assembly-CSharp.dll:.CharacterScript
-6ab8bfc8f8b546bc2f8a0ea9da07011a Assembly-CSharp.dll:.GameController
+5297d907a095c7076a852760ac69b7ae Assembly-CSharp.dll:.GameController

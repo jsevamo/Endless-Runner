@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 public class GameController : MonoBehaviour {
 
@@ -25,8 +25,6 @@ public class GameController : MonoBehaviour {
 	public Text pointsWhenLost;
 	public GameObject muteOn;
 
-	public string token;
-
 	[HideInInspector] public float TotalPoints;
 	[HideInInspector] public float HighScore;
 	int numberOfTries;
@@ -37,8 +35,6 @@ public class GameController : MonoBehaviour {
 	int amountOfPointsGained = 100;
 
 	[HideInInspector] public float totalGameTime;
-
-	public string userName = "user";
 
 	int timePlayed;
 	int timeForRun;
@@ -53,9 +49,16 @@ public class GameController : MonoBehaviour {
 	AudioSource menuAudio;
 	AudioSource gameAudio;
 
+
 	public bool canJump;
 
 	public GameObject ExitCorner;
+
+    int preventUpdate = 0;
+    bool asyncFinish = false;
+
+	public Text Loading;
+	public GameObject macLogo;
 
 	// Use this for initialization
 	void Start () {
@@ -63,6 +66,7 @@ public class GameController : MonoBehaviour {
 		Time.timeScale = 1f;
 		menuAudio = GameObject.Find ("Soundtrack").GetComponent<AudioSource> ();
 		gameAudio = GameObject.Find ("gameSountrack").GetComponent<AudioSource> ();
+
 		afterlog = AfterLog.GetComponent<AfterLogin> ();
 
 		menuAudio.Stop ();
@@ -77,8 +81,9 @@ public class GameController : MonoBehaviour {
 		pointsWhenLost.gameObject.SetActive (false);
 		QuitButton.gameObject.SetActive (false);
 		FinalQuitButton.gameObject.SetActive (false);
+		Loading.gameObject.SetActive (false);
 
-		usernameText.text = userName;
+		usernameText.text = LoadLevel.profile.firstname;
 
 		character = GameObject.Find ("Player").GetComponent<CharacterScript> ();
 		TotalPoints = 0;
@@ -115,31 +120,68 @@ public class GameController : MonoBehaviour {
 		}
 
 	}
-	
 
-	void Update () {
+    IEnumerator setUserData(string idToken, int lifes, int score, int timeplayed)
+    {
+        string json = "{\"idToken\":\"" + idToken + "\", \"lifes\": " + lifes + ", \"score\": " + score + ", \"timeplayed\": " + timeplayed + "}";
+        var uwr = new UnityWebRequest("https://us-central1-mac-center-back-to-school.cloudfunctions.net/setUserScores", "POST");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
+        uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+        uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        uwr.SetRequestHeader("Content-Type", "application/json");
+
+        //Send the request then wait here until it returns
+        yield return uwr.SendWebRequest();
+        if (uwr.isNetworkError)
+        {
+            Debug.Log("Error While Sending: " + uwr.error);
+        }
+        else
+        {
+            
+            timePlayed = 0;
+            asyncFinish = true;
+            
+        }
+    }
+
+
+    void Update () {
 
 
 		if (character.IsDead) {
-			
-			oneHundred.gameObject.SetActive(false);
-			tryAgainScreen.SetActive (true);
-			timePlayed = 0;
-			pointsWhenLost.text = Mathf.Round(TotalPoints).ToString ();
-			pointsWhenLost.gameObject.SetActive (true);
+            preventUpdate++;
 
-			//COLOCAR EL PUTO CODIGO ACÁ
+            if (preventUpdate <= 1)
+            {
+                oneHundred.gameObject.SetActive(false);
+				macLogo.gameObject.SetActive (false);
+                tryAgainScreen.SetActive(true);
+                pointsWhenLost.text = Mathf.Round(TotalPoints).ToString();
+                pointsWhenLost.gameObject.SetActive(true);
+                StartCoroutine(setUserData(LoadLevel.token, LoadLevel.profile.lifes, (int)Mathf.Round(TotalPoints), timePlayed));
+            }
+            else
+            {
+                preventUpdate = 2;
+            }
+            //COLOCAR EL PUTO CODIGO ACÁ
 
-			if (wantToTryAgain) {
-				
+            if (wantToTryAgain && asyncFinish)
+            {
 				wantToTryAgain = false;
-				character.resetgame ();
-				numberOfTries++;
-				Time.timeScale = 1f;
-				TotalPoints = 0;
-			}
+				Loading.gameObject.SetActive (false);
+				macLogo.gameObject.SetActive (true);
+                character.resetgame();
+                numberOfTries++;
+                Time.timeScale = 1f;
+                TotalPoints = 0;
+                preventUpdate = 0;
+                asyncFinish = false;
+            }
 
-		} else {
+
+        } else {
 			setUI ();
 		}
 
@@ -206,16 +248,15 @@ public class GameController : MonoBehaviour {
 
 	public void tryAgain()
 	{
+		Loading.gameObject.SetActive (true);
 		wantToTryAgain = true;
 
 	}
 
 	public void exitGame()
 	{
-		if (character.lifes > 1) {
-			character.lifes--;
-			afterlog.lifes = character.lifes;
-			afterlog.username = userName;
+		if (LoadLevel.profile.lifes > 1) {
+            LoadLevel.profile.lifes--;
 			SceneManager.LoadScene ("AfterLogin");
 
 		} else {
@@ -229,8 +270,6 @@ public class GameController : MonoBehaviour {
 	public void exitGameWithLifes()
 	{
 		
-		afterlog.lifes = character.lifes;
-		afterlog.username = userName;
 		SceneManager.LoadScene ("AfterLogin");
 	}
 
@@ -257,12 +296,12 @@ public class GameController : MonoBehaviour {
 
 	public string getlifes()
 	{
-		return character.lifes.ToString ();
+		return LoadLevel.profile.lifes.ToString ();
 	}
 
 	public string getUsername()
 	{
-		return userName;
+		return LoadLevel.profile.firstname;
 	}
 
 	public string getPoints()
