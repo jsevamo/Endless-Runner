@@ -46,7 +46,7 @@ public class CharacterScript : MonoBehaviour
 
 		if (IsGrounded == true) {
 
-			if (Input.GetKey("up") && GC.canJump)  {
+			if (Input.GetButton("Fire1") && GC.canJump)  {
 				IsGrounded = false;
 				rb.AddForce (force, ForceMode2D.Impulse);
 			}
